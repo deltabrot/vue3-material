@@ -53,13 +53,7 @@
                             </div>
                             <component
                                 v-if="headerConfig.cellRenderer"
-                                :is="
-                                    cellRenderers.find(
-                                        (x) =>
-                                            x.name ===
-                                            headerConfig.cellRenderer.name,
-                                    ).component
-                                "
+                                :is="headerConfig.cellRenderer.component"
                                 :row="row"
                                 :field="headerConfig.field"
                                 :exported="headerConfig.cellRenderer.exported"
@@ -112,7 +106,7 @@
 
 <script lang="ts">
 // vue
-import { defineComponent, ref, computed, defineAsyncComponent } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 // components
 import VmLoadingSpinner from './loading-spinner.vue';
@@ -196,21 +190,6 @@ export default defineComponent({
             return assign;
         });
 
-        // logic
-        // eslint-disable-next-line
-        const cellRenderers: any[] = [];
-        if (props.config) {
-            // eslint-disable-next-line
-            props.config.forEach((config: any) => {
-                if (config.cellRenderer) {
-                    cellRenderers.push({
-                        name: config.cellRenderer.name,
-                        component: config.cellRenderer.component,
-                    });
-                }
-            });
-        }
-
         // methods
         const selectRowById = (id: number) => {
             if (props.isSelectable) {
@@ -267,7 +246,6 @@ export default defineComponent({
             selectRowById,
             selectedRowIds,
             getSelectedIds,
-            cellRenderers,
             rowsPerPage,
             currentPage,
             totalPages,
