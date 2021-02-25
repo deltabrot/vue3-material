@@ -1,10 +1,18 @@
 # vue3-material
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/vue3-material.svg" alt="Version">
-  <img src="https://img.shields.io/npm/dt/vue3-material.svg" alt="Downloads">
-  <img src="https://img.shields.io/bundlephobia/min/vue3-material.svg" alt="Bundle Size">
-  <img src="https://img.shields.io/npm/l/vue3-material.svg" alt="License">
+    <a href="https://www.npmjs.com/package/vue3-material">
+        <img src="https://img.shields.io/npm/v/vue3-material.svg" alt="Version">
+    </a>
+    <a href="https://www.npmjs.com/package/vue3-material">
+        <img src="https://img.shields.io/npm/dt/vue3-material.svg" alt="Downloads">
+    </a>
+    <a href="https://www.npmjs.com/package/vue3-material">
+        <img src="https://img.shields.io/bundlephobia/min/vue3-material.svg" alt="Bundle Size">
+    </a>
+    <a href="https://www.npmjs.com/package/vue3-material">
+        <img src="https://img.shields.io/npm/l/vue3-material.svg" alt="License">
+    </a>
 </p>
 
 vue3-material is a library of UI components specifically made with Vue.js 3 in mind, which adhere to the <a href="https://material.io/design">Google Material Design</a> specification.
