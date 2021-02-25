@@ -38,6 +38,21 @@ export default defineComponent({
         // refs
         const btnRipple = ref<null | HTMLElement>(null);
 
+        // lifecycle hooks
+        onMounted(() => {
+            btnRipple.value?.style.setProperty(
+                '--background',
+                props.background,
+            );
+
+            const elevationShadowColor = props.elevation * 0.5;
+            btnRipple.value?.style.setProperty(
+                '--elevation-shadow',
+                `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
+            );
+            btnRipple.value?.style.setProperty('--color', props.color);
+        });
+
         // methods
         const createRipple = (event: PointerEvent) => {
             const button = event.currentTarget as HTMLElement;
@@ -69,21 +84,6 @@ export default defineComponent({
                 button.appendChild(circle);
             }
         };
-
-        // lifecycle hooks
-        onMounted(() => {
-            btnRipple.value?.style.setProperty(
-                '--background',
-                props.background,
-            );
-
-            const elevationShadowColor = props.elevation * 0.5;
-            btnRipple.value?.style.setProperty(
-                '--elevation-shadow',
-                `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
-            );
-            btnRipple.value?.style.setProperty('--color', props.color);
-        });
 
         return {
             props,

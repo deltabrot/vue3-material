@@ -231,7 +231,16 @@ var script$2 = vue.defineComponent({
   // eslint-disable-next-line
   setup: function setup(props) {
     // refs
-    var btnRipple = vue.ref(null); // methods
+    var btnRipple = vue.ref(null); // lifecycle hooks
+
+    vue.onMounted(function () {
+      var _btnRipple$value, _btnRipple$value2, _btnRipple$value3;
+
+      (_btnRipple$value = btnRipple.value) === null || _btnRipple$value === void 0 ? void 0 : _btnRipple$value.style.setProperty('--background', props.background);
+      var elevationShadowColor = props.elevation * 0.5;
+      (_btnRipple$value2 = btnRipple.value) === null || _btnRipple$value2 === void 0 ? void 0 : _btnRipple$value2.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
+      (_btnRipple$value3 = btnRipple.value) === null || _btnRipple$value3 === void 0 ? void 0 : _btnRipple$value3.style.setProperty('--color', props.color);
+    }); // methods
 
     var createRipple = function createRipple(event) {
       var button = event.currentTarget;
@@ -253,26 +262,17 @@ var script$2 = vue.defineComponent({
 
         button.appendChild(circle);
       }
-    }; // lifecycle hooks
+    };
 
-
-    vue.onMounted(function () {
-      var _btnRipple$value, _btnRipple$value2, _btnRipple$value3;
-
-      (_btnRipple$value = btnRipple.value) === null || _btnRipple$value === void 0 ? void 0 : _btnRipple$value.style.setProperty('--background', props.background);
-      var elevationShadowColor = props.elevation * 0.5;
-      (_btnRipple$value2 = btnRipple.value) === null || _btnRipple$value2 === void 0 ? void 0 : _btnRipple$value2.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
-      (_btnRipple$value3 = btnRipple.value) === null || _btnRipple$value3 === void 0 ? void 0 : _btnRipple$value3.style.setProperty('--color', props.color);
-    });
     return {
       props: props,
       createRipple: createRipple,
       btnRipple: btnRipple
     };
   }
-});var _withId$2 = /*#__PURE__*/vue.withScopeId("data-v-e1383658");
+});var _withId$2 = /*#__PURE__*/vue.withScopeId("data-v-c7724544");
 
-vue.pushScopeId("data-v-e1383658");
+vue.pushScopeId("data-v-c7724544");
 
 var _hoisted_1$2 = /*#__PURE__*/vue.createVNode("div", {
   class: "btn-overlay"
@@ -289,10 +289,10 @@ var render$2 = /*#__PURE__*/_withId$2(function (_ctx, _cache, $props, $setup, $d
     type: _ctx.type,
     ref: "btnRipple"
   }, [_hoisted_1$2, vue.renderSlot(_ctx.$slots, "default")], 40, ["type"]);
-});var css_248z$3 = "\n.btn-ripple[data-v-e1383658] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-e1383658] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-e1383658] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-e1383658] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
+});var css_248z$3 = "\n.btn-ripple[data-v-c7724544] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-c7724544] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
 styleInject(css_248z$3);var css_248z$4 = "\nspan.ripple {\n    display: flex;\n    position: absolute;\n    border-radius: 50%;\n    transform: scale(0);\n    animation: ripple 600ms linear;\n    background: rgba(255, 255, 255, 0.7);\n    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);\n}\n@keyframes ripple {\nto {\n        transform: scale(4);\n        opacity: 0;\n}\n}\n";
 styleInject(css_248z$4);script$2.render = render$2;
-script$2.__scopeId = "data-v-e1383658";// vue
+script$2.__scopeId = "data-v-c7724544";// vue
 var script$3 = vue.defineComponent({
   setup: function setup() {
     return {};

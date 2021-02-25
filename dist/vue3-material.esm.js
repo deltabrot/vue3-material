@@ -187,7 +187,14 @@ var script$2 = defineComponent({
   // eslint-disable-next-line
   setup(props) {
     // refs
-    const btnRipple = ref(null); // methods
+    const btnRipple = ref(null); // lifecycle hooks
+
+    onMounted(() => {
+      btnRipple.value?.style.setProperty('--background', props.background);
+      const elevationShadowColor = props.elevation * 0.5;
+      btnRipple.value?.style.setProperty('--elevation-shadow', `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`);
+      btnRipple.value?.style.setProperty('--color', props.color);
+    }); // methods
 
     const createRipple = event => {
       const button = event.currentTarget;
@@ -213,15 +220,8 @@ var script$2 = defineComponent({
 
         button.appendChild(circle);
       }
-    }; // lifecycle hooks
+    };
 
-
-    onMounted(() => {
-      btnRipple.value?.style.setProperty('--background', props.background);
-      const elevationShadowColor = props.elevation * 0.5;
-      btnRipple.value?.style.setProperty('--elevation-shadow', `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`);
-      btnRipple.value?.style.setProperty('--color', props.color);
-    });
     return {
       props,
       createRipple,
@@ -231,9 +231,9 @@ var script$2 = defineComponent({
 
 });
 
-const _withId$2 = /*#__PURE__*/withScopeId("data-v-e1383658");
+const _withId$2 = /*#__PURE__*/withScopeId("data-v-c7724544");
 
-pushScopeId("data-v-e1383658");
+pushScopeId("data-v-c7724544");
 
 const _hoisted_1$2 = /*#__PURE__*/createVNode("div", {
   class: "btn-overlay"
@@ -250,14 +250,14 @@ const render$2 = /*#__PURE__*/_withId$2((_ctx, _cache, $props, $setup, $data, $o
   }, [_hoisted_1$2, renderSlot(_ctx.$slots, "default")], 40, ["type"]);
 });
 
-var css_248z$3 = "\n.btn-ripple[data-v-e1383658] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-e1383658] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-e1383658] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-e1383658] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
+var css_248z$3 = "\n.btn-ripple[data-v-c7724544] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-c7724544] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
 styleInject(css_248z$3);
 
 var css_248z$4 = "\nspan.ripple {\n    display: flex;\n    position: absolute;\n    border-radius: 50%;\n    transform: scale(0);\n    animation: ripple 600ms linear;\n    background: rgba(255, 255, 255, 0.7);\n    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);\n}\n@keyframes ripple {\nto {\n        transform: scale(4);\n        opacity: 0;\n}\n}\n";
 styleInject(css_248z$4);
 
 script$2.render = render$2;
-script$2.__scopeId = "data-v-e1383658";
+script$2.__scopeId = "data-v-c7724544";
 
 // vue
 var script$3 = defineComponent({
