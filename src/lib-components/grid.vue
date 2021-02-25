@@ -115,7 +115,7 @@
 import { defineComponent, ref, computed, defineAsyncComponent } from 'vue';
 
 // components
-import VmLoadingSpinner from '../loading-spinner.vue';
+import VmLoadingSpinner from './loading-spinner.vue';
 
 export default defineComponent({
     components: {
@@ -203,12 +203,9 @@ export default defineComponent({
             // eslint-disable-next-line
             props.config.forEach((config: any) => {
                 if (config.cellRenderer) {
-                    const c = defineAsyncComponent(() =>
-                        import('./plugins/' + config.cellRenderer.name),
-                    );
                     cellRenderers.push({
                         name: config.cellRenderer.name,
-                        component: c,
+                        component: config.cellRenderer.component,
                     });
                 }
             });
