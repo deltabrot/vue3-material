@@ -125,12 +125,12 @@ var script = vue.defineComponent({
 
 
     vue.onMounted(function () {
-      var _btnRipple$value, _btnRipple$value2, _btnRipple$value3;
-
-      (_btnRipple$value = btnRipple.value) === null || _btnRipple$value === void 0 ? void 0 : _btnRipple$value.style.setProperty('--background', props.background);
-      var elevationShadowColor = props.elevation * 0.5;
-      (_btnRipple$value2 = btnRipple.value) === null || _btnRipple$value2 === void 0 ? void 0 : _btnRipple$value2.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
-      (_btnRipple$value3 = btnRipple.value) === null || _btnRipple$value3 === void 0 ? void 0 : _btnRipple$value3.style.setProperty('--color', props.color);
+      if (btnRipple.value) {
+        btnRipple.value.style.setProperty('--background', props.background);
+        var elevationShadowColor = props.elevation * 0.5;
+        btnRipple.value.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
+        btnRipple.value.style.setProperty('--color', props.color);
+      }
     });
     return {
       props: props,
@@ -138,9 +138,9 @@ var script = vue.defineComponent({
       btnRipple: btnRipple
     };
   }
-});var _withId = /*#__PURE__*/vue.withScopeId("data-v-61b715d0");
+});var _withId = /*#__PURE__*/vue.withScopeId("data-v-1bb76b2c");
 
-vue.pushScopeId("data-v-61b715d0");
+vue.pushScopeId("data-v-1bb76b2c");
 
 var _hoisted_1 = /*#__PURE__*/vue.createVNode("div", {
   class: "btn-overlay"
@@ -186,10 +186,10 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   } else {
     style.appendChild(document.createTextNode(css));
   }
-}var css_248z = "\n.btn-ripple[data-v-61b715d0] {\n    --size: 45px;\n    width: var(--size);\n    height: var(--size);\n    min-width: var(--size);\n    min-height: var(--size);\n    max-width: var(--size);\n    max-height: var(--size);\n    user-select: none;\n    display: inline-block;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    font-size: 1.6rem;\n    outline: 0;\n    border: 0;\n    border-radius: calc(var(--size) / 2);\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n}\n.btn-ripple:hover .btn-overlay[data-v-61b715d0] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-61b715d0] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.small[data-v-61b715d0] {\n    --size: 35px;\n    font-size: 1.4rem;\n}\n.btn-overlay[data-v-61b715d0] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
+}var css_248z = "\n.btn-ripple[data-v-1bb76b2c] {\n    --size: 45px;\n    width: var(--size);\n    height: var(--size);\n    min-width: var(--size);\n    min-height: var(--size);\n    max-width: var(--size);\n    max-height: var(--size);\n    user-select: none;\n    display: inline-block;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    font-size: 1.6rem;\n    outline: 0;\n    border: 0;\n    border-radius: calc(var(--size) / 2);\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n}\n.btn-ripple:hover .btn-overlay[data-v-1bb76b2c] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-1bb76b2c] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.small[data-v-1bb76b2c] {\n    --size: 35px;\n    font-size: 1.4rem;\n}\n.btn-overlay[data-v-1bb76b2c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
 styleInject(css_248z);var css_248z$1 = "\nspan.ripple {\n    display: flex;\n    position: absolute;\n    border-radius: 50%;\n    transform: scale(0);\n    animation: ripple 600ms linear;\n    background: rgba(255, 255, 255, 0.7);\n    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);\n}\n@keyframes ripple {\nto {\n        transform: scale(4);\n        opacity: 0;\n}\n}\n";
 styleInject(css_248z$1);script.render = render;
-script.__scopeId = "data-v-61b715d0";// vue
+script.__scopeId = "data-v-1bb76b2c";// vue
 var script$1 = vue.defineComponent({
   setup: function setup() {
     return {};
@@ -234,12 +234,12 @@ var script$2 = vue.defineComponent({
     var btnRipple = vue.ref(null); // lifecycle hooks
 
     vue.onMounted(function () {
-      var _btnRipple$value, _btnRipple$value2, _btnRipple$value3;
-
-      (_btnRipple$value = btnRipple.value) === null || _btnRipple$value === void 0 ? void 0 : _btnRipple$value.style.setProperty('--background', props.background);
-      var elevationShadowColor = props.elevation * 0.5;
-      (_btnRipple$value2 = btnRipple.value) === null || _btnRipple$value2 === void 0 ? void 0 : _btnRipple$value2.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
-      (_btnRipple$value3 = btnRipple.value) === null || _btnRipple$value3 === void 0 ? void 0 : _btnRipple$value3.style.setProperty('--color', props.color);
+      if (btnRipple.value) {
+        btnRipple.value.style.setProperty('--background', props.background);
+        var elevationShadowColor = props.elevation * 0.5;
+        btnRipple.value.style.setProperty('--elevation-shadow', "0 2px 4px rgba(0, 0, 0, ".concat(elevationShadowColor, ")"));
+        btnRipple.value.style.setProperty('--color', props.color);
+      }
     }); // methods
 
     var createRipple = function createRipple(event) {
@@ -270,9 +270,9 @@ var script$2 = vue.defineComponent({
       btnRipple: btnRipple
     };
   }
-});var _withId$2 = /*#__PURE__*/vue.withScopeId("data-v-c7724544");
+});var _withId$2 = /*#__PURE__*/vue.withScopeId("data-v-68af5010");
 
-vue.pushScopeId("data-v-c7724544");
+vue.pushScopeId("data-v-68af5010");
 
 var _hoisted_1$2 = /*#__PURE__*/vue.createVNode("div", {
   class: "btn-overlay"
@@ -289,10 +289,10 @@ var render$2 = /*#__PURE__*/_withId$2(function (_ctx, _cache, $props, $setup, $d
     type: _ctx.type,
     ref: "btnRipple"
   }, [_hoisted_1$2, vue.renderSlot(_ctx.$slots, "default")], 40, ["type"]);
-});var css_248z$3 = "\n.btn-ripple[data-v-c7724544] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-c7724544] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-c7724544] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
+});var css_248z$3 = "\n.btn-ripple[data-v-68af5010] {\n    user-select: none;\n    display: inline-flex;\n    align-items: center;\n    position: relative;\n    overflow: hidden;\n    transition: background 400ms;\n    color: var(--color);\n    background: var(--background);\n    padding: 10px 16px;\n    font-size: 0.88rem;\n    outline: 0;\n    border: 0;\n    border-radius: 4px;\n    box-shadow: var(--elevation-shadow);\n    cursor: pointer;\n    white-space: nowrap;\n}\n.btn-ripple:hover .btn-overlay[data-v-68af5010] {\n    background: rgba(255, 255, 255, 0.05);\n}\n.btn-ripple:focus .btn-overlay[data-v-68af5010] {\n    background: rgba(255, 255, 255, 0.1);\n}\n.btn-overlay[data-v-68af5010] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(255, 255, 255, 0);\n    transition-duration: 0.1s;\n}\n";
 styleInject(css_248z$3);var css_248z$4 = "\nspan.ripple {\n    display: flex;\n    position: absolute;\n    border-radius: 50%;\n    transform: scale(0);\n    animation: ripple 600ms linear;\n    background: rgba(255, 255, 255, 0.7);\n    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);\n}\n@keyframes ripple {\nto {\n        transform: scale(4);\n        opacity: 0;\n}\n}\n";
 styleInject(css_248z$4);script$2.render = render$2;
-script$2.__scopeId = "data-v-c7724544";// vue
+script$2.__scopeId = "data-v-68af5010";// vue
 var script$3 = vue.defineComponent({
   setup: function setup() {
     return {};
@@ -453,21 +453,21 @@ var script$5 = vue.defineComponent({
     var loadingSpinner = vue.ref(null); // lifecycle hooks
 
     vue.onMounted(function () {
-      var _loadingSpinner$value, _loadingSpinner$value2, _loadingSpinner$value3, _loadingSpinner$value4, _loadingSpinner$value5;
-
-      (_loadingSpinner$value = loadingSpinner.value) === null || _loadingSpinner$value === void 0 ? void 0 : _loadingSpinner$value.style.setProperty('--spinner-scale', props.scale + '');
-      (_loadingSpinner$value2 = loadingSpinner.value) === null || _loadingSpinner$value2 === void 0 ? void 0 : _loadingSpinner$value2.style.setProperty('--spinner-color', props.color);
-      (_loadingSpinner$value3 = loadingSpinner.value) === null || _loadingSpinner$value3 === void 0 ? void 0 : _loadingSpinner$value3.style.setProperty('--ring-width', props.ringWidth * props.scale + 'px');
-      (_loadingSpinner$value4 = loadingSpinner.value) === null || _loadingSpinner$value4 === void 0 ? void 0 : _loadingSpinner$value4.style.setProperty('--width', props.width * props.scale + 'px');
-      (_loadingSpinner$value5 = loadingSpinner.value) === null || _loadingSpinner$value5 === void 0 ? void 0 : _loadingSpinner$value5.style.setProperty('--height', props.height * props.scale + 'px');
+      if (loadingSpinner.value) {
+        loadingSpinner.value.style.setProperty('--spinner-scale', props.scale + '');
+        loadingSpinner.value.style.setProperty('--spinner-color', props.color);
+        loadingSpinner.value.style.setProperty('--ring-width', props.ringWidth * props.scale + 'px');
+        loadingSpinner.value.style.setProperty('--width', props.width * props.scale + 'px');
+        loadingSpinner.value.style.setProperty('--height', props.height * props.scale + 'px');
+      }
     });
     return {
       loadingSpinner: loadingSpinner
     };
   }
-});var _withId$5 = /*#__PURE__*/vue.withScopeId("data-v-f4043936");
+});var _withId$5 = /*#__PURE__*/vue.withScopeId("data-v-04827584");
 
-vue.pushScopeId("data-v-f4043936");
+vue.pushScopeId("data-v-04827584");
 
 var _hoisted_1$5 = {
   class: "loading-spinner-container"
@@ -494,9 +494,9 @@ vue.popScopeId();
 
 var render$5 = /*#__PURE__*/_withId$5(function (_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("div", _hoisted_1$5, [_hoisted_2$2, vue.createVNode("div", _hoisted_3$1, [_hoisted_4$1], 512), _hoisted_5$1]);
-});var css_248z$7 = "\n.loading-spinner-container[data-v-f4043936] {\n    display: flex;\n    align-items: center;\n}\n.loading-spinner[data-v-f4043936] {\n    display: inline-flex;\n    justify-content: center;\n    align-items: center;\n    position: relative;\n    width: var(--width);\n    height: var(--height);\n    min-width: var(--width);\n    min-height: var(--height);\n    overflow: hidden;\n}\n.lds-dual-ring[data-v-f4043936] {\n    display: inline-flex;\n    justify-content: center;\n    align-items: center;\n    position: relative;\n    width: var(--width);\n    height: var(--height);\n    min-width: var(--width);\n    min-height: var(--height);\n}\n.lds-dual-ring[data-v-f4043936]:before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    border: var(--ring-width) solid rgba(255, 255, 255, 0.05);\n    box-sizing: border-box;\n}\n.lds-dual-ring[data-v-f4043936]:after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    border: var(--ring-width) solid var(--spinner-color);\n    border-color: var(--spinner-color) transparent transparent transparent;\n    animation: lds-dual-ring-f4043936 1.2s linear infinite;\n    box-sizing: border-box;\n}\n@keyframes lds-dual-ring-f4043936 {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n.hidden-dash[data-v-f4043936] {\n    user-select: none;\n    color: rgba(0, 0, 0, 0);\n}\n";
+});var css_248z$7 = "\n.loading-spinner-container[data-v-04827584] {\n    display: flex;\n    align-items: center;\n}\n.loading-spinner[data-v-04827584] {\n    display: inline-flex;\n    justify-content: center;\n    align-items: center;\n    position: relative;\n    width: var(--width);\n    height: var(--height);\n    min-width: var(--width);\n    min-height: var(--height);\n    overflow: hidden;\n}\n.lds-dual-ring[data-v-04827584] {\n    display: inline-flex;\n    justify-content: center;\n    align-items: center;\n    position: relative;\n    width: var(--width);\n    height: var(--height);\n    min-width: var(--width);\n    min-height: var(--height);\n}\n.lds-dual-ring[data-v-04827584]:before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    border: var(--ring-width) solid rgba(255, 255, 255, 0.05);\n    box-sizing: border-box;\n}\n.lds-dual-ring[data-v-04827584]:after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n    border: var(--ring-width) solid var(--spinner-color);\n    border-color: var(--spinner-color) transparent transparent transparent;\n    animation: lds-dual-ring-04827584 1.2s linear infinite;\n    box-sizing: border-box;\n}\n@keyframes lds-dual-ring-04827584 {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n.hidden-dash[data-v-04827584] {\n    user-select: none;\n    color: rgba(0, 0, 0, 0);\n}\n";
 styleInject(css_248z$7);script$5.render = render$5;
-script$5.__scopeId = "data-v-f4043936";// vue
+script$5.__scopeId = "data-v-04827584";// vue
 var script$6 = vue.defineComponent({
   components: {
     VmActionButton: script
@@ -737,23 +737,23 @@ var script$c = vue.defineComponent({
     var paper = vue.ref(null); // lifecycle hooks
 
     vue.onMounted(function () {
-      var _paper$value;
+      if (paper.value) {
+        var color = 25 + props.elevation * 10;
 
-      var color = 25 + props.elevation * 10;
+        if (color < 0 || color > 255) {
+          color = 255;
+        }
 
-      if (color < 0 || color > 255) {
-        color = 255;
+        paper.value.style.setProperty('--elevation', "rgb(".concat(color, ", ").concat(color, ", ").concat(color, ")"));
       }
-
-      (_paper$value = paper.value) === null || _paper$value === void 0 ? void 0 : _paper$value.style.setProperty('--elevation', "rgb(".concat(color, ", ").concat(color, ", ").concat(color, ")"));
     });
     return {
       paper: paper
     };
   }
-});var _withId$c = /*#__PURE__*/vue.withScopeId("data-v-31b1c1e2");
+});var _withId$c = /*#__PURE__*/vue.withScopeId("data-v-28344b3a");
 
-vue.pushScopeId("data-v-31b1c1e2");
+vue.pushScopeId("data-v-28344b3a");
 
 var _hoisted_1$c = {
   class: "paper",
@@ -764,9 +764,9 @@ vue.popScopeId();
 
 var render$c = /*#__PURE__*/_withId$c(function (_ctx, _cache, $props, $setup, $data, $options) {
   return vue.openBlock(), vue.createBlock("div", _hoisted_1$c, [vue.renderSlot(_ctx.$slots, "default")], 512);
-});var css_248z$e = "\n.paper[data-v-31b1c1e2] {\n    display: flex;\n    flex-direction: column;\n    background: var(--elevation);\n    border-radius: 5px;\n    overflow: hidden;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n}\n";
+});var css_248z$e = "\n.paper[data-v-28344b3a] {\n    display: flex;\n    flex-direction: column;\n    background: var(--elevation);\n    border-radius: 5px;\n    overflow: hidden;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);\n}\n";
 styleInject(css_248z$e);script$c.render = render$c;
-script$c.__scopeId = "data-v-31b1c1e2";var script$d = {
+script$c.__scopeId = "data-v-28344b3a";var script$d = {
   props: {
     id: {
       type: Number

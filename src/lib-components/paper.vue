@@ -22,14 +22,16 @@ export default defineComponent({
 
         // lifecycle hooks
         onMounted(() => {
-            let color = 25 + props.elevation * 10;
-            if (color < 0 || color > 255) {
-                color = 255;
+            if (paper.value) {
+                let color = 25 + props.elevation * 10;
+                if (color < 0 || color > 255) {
+                    color = 255;
+                }
+                paper.value.style.setProperty(
+                    '--elevation',
+                    `rgb(${color}, ${color}, ${color})`,
+                );
             }
-            paper.value?.style.setProperty(
-                '--elevation',
-                `rgb(${color}, ${color}, ${color})`,
-            );
         });
 
         return {

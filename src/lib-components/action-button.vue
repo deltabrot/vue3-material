@@ -81,17 +81,19 @@ export default defineComponent({
 
         // lifecycle hooks
         onMounted(() => {
-            btnRipple.value?.style.setProperty(
-                '--background',
-                props.background,
-            );
+            if (btnRipple.value) {
+                btnRipple.value.style.setProperty(
+                    '--background',
+                    props.background,
+                );
 
-            const elevationShadowColor = props.elevation * 0.5;
-            btnRipple.value?.style.setProperty(
-                '--elevation-shadow',
-                `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
-            );
-            btnRipple.value?.style.setProperty('--color', props.color);
+                const elevationShadowColor = props.elevation * 0.5;
+                btnRipple.value.style.setProperty(
+                    '--elevation-shadow',
+                    `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
+                );
+                btnRipple.value.style.setProperty('--color', props.color);
+            }
         });
 
         return {

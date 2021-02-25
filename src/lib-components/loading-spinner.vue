@@ -42,26 +42,28 @@ export default defineComponent({
 
         // lifecycle hooks
         onMounted(() => {
-            loadingSpinner.value?.style.setProperty(
-                '--spinner-scale',
-                props.scale + '',
-            );
-            loadingSpinner.value?.style.setProperty(
-                '--spinner-color',
-                props.color,
-            );
-            loadingSpinner.value?.style.setProperty(
-                '--ring-width',
-                props.ringWidth * props.scale + 'px',
-            );
-            loadingSpinner.value?.style.setProperty(
-                '--width',
-                props.width * props.scale + 'px',
-            );
-            loadingSpinner.value?.style.setProperty(
-                '--height',
-                props.height * props.scale + 'px',
-            );
+            if (loadingSpinner.value) {
+                loadingSpinner.value.style.setProperty(
+                    '--spinner-scale',
+                    props.scale + '',
+                );
+                loadingSpinner.value.style.setProperty(
+                    '--spinner-color',
+                    props.color,
+                );
+                loadingSpinner.value.style.setProperty(
+                    '--ring-width',
+                    props.ringWidth * props.scale + 'px',
+                );
+                loadingSpinner.value.style.setProperty(
+                    '--width',
+                    props.width * props.scale + 'px',
+                );
+                loadingSpinner.value.style.setProperty(
+                    '--height',
+                    props.height * props.scale + 'px',
+                );
+            }
         });
 
         return {
