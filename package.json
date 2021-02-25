@@ -1,6 +1,6 @@
 {
     "name": "vue3-material",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Vue 3 components which adhere to the material design spec",
     "license": "MIT",
     "main": "dist/vue3-material.ssr.js",
