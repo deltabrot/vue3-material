@@ -46,7 +46,7 @@
         "vue": "^3.0.5"
     },
     "peerDependencies": {
-        "vue": "^3.0.5"
+        "vue": "^3.0.0"
     },
     "engines": {
         "node": ">=12"
