@@ -26,8 +26,8 @@ import App from './app.vue';
 import Vue3Material from 'vue3-material';
 
 createApp(App)
-  .use(Vue3Material)
-  .mount('#app');
+    .use(Vue3Material)
+    .mount('#app');
 ```
 
 Or import individual components:

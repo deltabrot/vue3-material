@@ -1,7 +1,6 @@
 vue3-material-*.tgz
 
 .DS_Store
-node_modules
 /dist
 
 /tests/e2e/videos/
