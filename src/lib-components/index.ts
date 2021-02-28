@@ -15,3 +15,4 @@ export { default as VmPaperHeader } from './paper-header.vue';
 export { default as VmPaper } from './paper.vue';
 export { default as VmSwitch } from './switch.vue';
 export { default as VmTextField } from './text-field.vue';
+export { default as VmTheme } from './theme.vue';

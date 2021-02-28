@@ -19,3 +19,4 @@ export const VmPaperHeader: DefineComponent<{}, {}, any>;
 export const VmPaper: DefineComponent<{}, {}, any>;
 export const VmSwitch: DefineComponent<{}, {}, any>;
 export const VmTextField: DefineComponent<{}, {}, any>;
+export const VmTheme: DefineComponent<{}, {}, any>;
