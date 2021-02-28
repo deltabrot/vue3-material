@@ -2,27 +2,34 @@
     <button
         class="btn-ripple"
         :class="[
-        { 'btn-ripple-uppercase': !props.preventUppercase },
-        `elevation-${currentElevation}`,
+            { 'btn-ripple-uppercase': !props.preventUppercase },
+            `btn-${type}`,
         ]"
+        :style="cssProperties"
         @mousedown="createRipple"
-        :type="type"
+        :type="isSubmit ? 'submit' : 'button'"
         ref="btnRipple"
     >
         <div class="btn-overlay"></div>
-        <slot></slot>
+        <div class="content">
+            <slot></slot>
+        </div>
     </button>
 </template>
 
 <script lang="ts">
 // vue
-import { defineComponent, ref, computed, onMounted } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
     props: {
         type: {
             type: String,
-            default: 'button',
+            default: 'contained',
+        },
+        isSubmit: {
+            type: Boolean,
+            default: false,
         },
         background: {
             type: String,
@@ -34,7 +41,7 @@ export default defineComponent({
         },
         elevation: {
             type: Number,
-            default: 4,
+            default: 2,
         },
         preventUppercase: {
             type: Boolean,
@@ -46,30 +53,44 @@ export default defineComponent({
         // refs
         const btnRipple = ref<null | HTMLElement>(null);
 
-        const isClicked = ref(false);
-        // computed
-        const currentElevation = computed(() => {
-            return props.elevation + (isClicked.value ? 4 : 0);
-        });
-
-        // lifecycle hooks
-        onMounted(() => {
-            if (btnRipple.value) {
-                btnRipple.value.style.setProperty(
-                    '--background',
-                    props.background,
-                );
-
-                btnRipple.value.style.setProperty('--color', props.color);
+        const toRgba = (() => {
+            if (props.type === 'contained') {
+                return () => { return '255, 255, 255' };
             }
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = 1;
+            canvas.height = 1;
+
+            return (color: string) => {
+                if (!context) {
+                    return '255, 255, 255';
+                }
+
+                context.fillStyle = color;
+                context.fillRect(0, 0, 1, 1);
+
+                var data = context.getImageData(0, 0, 1, 1).data;
+
+                return `${data[0]}, ${data[1]}, ${data[2]}`;
+            };
+        })();
+
+        // computed
+        const cssProperties = computed(() => {
+            return (
+                `--background: ${props.background};` +
+                `--color: ${props.color};` +
+                `--primary-color: ${toRgba(props.background)};` +
+                `--default-elevation: var(--elevation-${props.elevation});` +
+                `--focus-elevation: var(--elevation-${props.elevation + 2});` +
+                `--active-elevation: var(--elevation-${props.elevation + 6});`
+            );
         });
 
         // methods
         const createRipple = (event: PointerEvent) => {
-            isClicked.value = true;
-            setTimeout(() => {
-                isClicked.value = false;
-            }, 300);
             const button = event.currentTarget as HTMLElement;
 
             if (button) {
@@ -91,9 +112,11 @@ export default defineComponent({
                 `;
                 circle.classList.add('ripple');
 
-                const ripple = button.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                    ripple.remove();
+                if (btnRipple.value) {
+                    const ripple = button.getElementsByClassName('ripple')[0];
+                    if (ripple) {
+                        ripple.remove();
+                    }
                 }
 
                 button.appendChild(circle);
@@ -104,37 +127,20 @@ export default defineComponent({
             props,
             createRipple,
             btnRipple,
-            currentElevation,
+            cssProperties,
         };
     },
 });
 </script>
 
 <style scoped>
-.btn-ripple {
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+/* contained */
+.btn-contained {
     color: var(--color);
     background: var(--background);
-    padding: 10px 16px;
-    font-size: 0.88rem;
-    outline: 0;
+    box-shadow: var(--default-elevation);
     border: 0;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 800ms, box-shadow 300ms;
-}
-
-.btn-ripple:hover .btn-overlay {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.btn-ripple:focus .btn-overlay {
-    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 16px;
 }
 
 .btn-overlay {
@@ -147,6 +153,72 @@ export default defineComponent({
     transition-duration: 0.1s;
 }
 
+.btn-contained:hover .btn-overlay {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-contained:focus .btn-overlay {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* outlined and text */
+.btn-outlined {
+    background: none;
+    color: var(--background);
+    border: 1px solid var(--background);
+    padding: 10px 15px;
+}
+
+.btn-text {
+    background: none;
+    color: var(--background);
+    border: 0;
+    padding: 10px 16px;
+}
+
+.btn-text:hover,
+.btn-outlined:hover {
+    background: rgba(var(--primary-color), 0.05);
+}
+
+.btn-text:focus,
+.btn-outlined:focus {
+    background: rgba(var(--primary-color), 0.15);
+}
+
+/* content */
+.content {
+    z-index: 10;
+}
+
+/* ripple */
+.btn-ripple {
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    outline: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: background 100ms, box-shadow 300ms;
+}
+
+.btn-contained:hover,
+.btn-contained:focus {
+    box-shadow: var(--focus-elevation);
+}
+
+.btn-contained:active:hover {
+    box-shadow: var(--active-elevation);
+}
+
 .btn-ripple-uppercase {
     text-transform: uppercase;
 }
@@ -154,19 +226,34 @@ export default defineComponent({
 
 <style>
 span.ripple {
+    --visible-opacity: 0.2;
+    pointer-events: none;
     display: flex;
     position: absolute;
     border-radius: 50%;
-    transform: scale(0);
-    animation: ripple 600ms linear;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    background-color: rgba(var(--primary-color), 0);
+    box-shadow: 0 0 5px 5px rgba(var(--primary-color), var(--visible-opacity));
+    animation: ripple 450ms ease-in;
+    transform: scale(4);
+    transition: background-color 0.2s;
+}
+
+.btn-ripple:active:hover span.ripple {
+    background-color: rgba(var(--primary-color), var(--visible-opacity)) !important;
 }
 
 @keyframes ripple {
-    to {
+    0% {
+        background-color: rgba(var(--primary-color), var(--visible-opacity));
+        transform: scale(0);
+    }
+    66% {
+        background-color: rgba(var(--primary-color), var(--visible-opacity));
         transform: scale(4);
-        opacity: 0;
+    }
+    100% {
+        background-color: rgba(var(--primary-color), 0);
     }
 }
 </style>

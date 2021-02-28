@@ -18,7 +18,7 @@ export default defineComponent({
 <style scoped>
 .app-bar {
     display: flex;
-    background: #212121;
+    background: var(--default-color);
     overflow: hidden;
 }
 </style>
