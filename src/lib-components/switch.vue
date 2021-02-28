@@ -9,7 +9,7 @@
             />
             <span class="slider"></span>
         </label>
-        <label class="ml-1" v-if="props.label">
+        <label class="label" v-if="props.label">
             {{ props.label }}
         </label>
     </div>
@@ -99,7 +99,7 @@ export default {
 }
 
 input:checked + .slider {
-    background: #5a5;
+    background: #3ca354;
     border-radius: inherit;
 }
 
@@ -111,5 +111,9 @@ input:checked + .slider:before {
     transform: translateX(
         calc(var(--width) - var(--switch-width) - (2 * var(--inner-padding)))
     );
+}
+
+.label {
+    margin-left: var(--default-margin);
 }
 </style>

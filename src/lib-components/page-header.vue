@@ -18,7 +18,7 @@ export default defineComponent({
 <style scoped>
 .page-header {
     font-size: 1.8rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(var(--default-color), 0.15);
     margin-top: calc(var(--default-margin) * 4);
     margin-bottom: calc(var(--default-margin) * 4);
     padding-bottom: calc(var(--default-margin) * 1);

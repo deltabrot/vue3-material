@@ -1,5 +1,9 @@
 <template>
-    <div :class="props.mode + '-theme'">
+    <div
+        class="theme"
+        :class="props.mode + '-theme'"
+        ref="theme"
+    >
         <slot></slot>
     </div>
 </template>
@@ -10,8 +14,8 @@ export default {
         mode: {
             type: String,
             default: 'light',
-        }
-    }
+        },
+    },
     // eslint-disable-next-line
     setup(props: any) {
         return {
@@ -21,14 +25,322 @@ export default {
 };
 </script>
 
-<style>
-body {
-    margin: 0;
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+.theme {
+    --default-margin: 5px;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.light-theme {
+    --default-color: 0, 0, 0;
+    background: #ffffff;
+    color: #000;
+}
+
+.dark-theme {
+    --default-color: 255, 255, 255;
+    background: #121212;
+    color: #fff;
 }
 </style>
 
-<style scoped>
+<style>
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
+
 .theme {
-    background: #121212;
+    --baseline-color: 0, 0, 0;
+    --umbra-opacity: 0.2;
+    --penumbra-opacity: 0.14;
+    --ambient-opacity: 0.12;
+
+    --umbra-map-0: 0px 0px 0px 0px;
+    --umbra-map-1: 0px 2px 1px -1px;
+    --umbra-map-2: 0px 3px 1px -2px;
+    --umbra-map-3: 0px 3px 3px -2px;
+    --umbra-map-4: 0px 2px 4px -1px;
+    --umbra-map-5: 0px 3px 5px -1px;
+    --umbra-map-6: 0px 3px 5px -1px;
+    --umbra-map-7: 0px 4px 5px -2px;
+    --umbra-map-8: 0px 5px 5px -3px;
+    --umbra-map-9: 0px 5px 6px -3px;
+    --umbra-map-10: 0px 6px 6px -3px;
+    --umbra-map-11: 0px 6px 7px -4px;
+    --umbra-map-12: 0px 7px 8px -4px;
+    --umbra-map-13: 0px 7px 8px -4px;
+    --umbra-map-14: 0px 7px 9px -4px;
+    --umbra-map-15: 0px 8px 9px -5px;
+    --umbra-map-16: 0px 8px 10px -5px;
+    --umbra-map-17: 0px 8px 11px -5px;
+    --umbra-map-18: 0px 9px 11px -5px;
+    --umbra-map-19: 0px 9px 12px -6px;
+    --umbra-map-20: 0px 10px 13px -6px;
+    --umbra-map-21: 0px 10px 13px -6px;
+    --umbra-map-22: 0px 10px 14px -6px;
+    --umbra-map-23: 0px 11px 14px -7px;
+    --umbra-map-24: 0px 11px 15px -7px;
+    --penumbra-map-0: 0px 0px 0px 0px;
+    --penumbra-map-1: 0px 1px 1px 0px;
+    --penumbra-map-2: 0px 2px 2px 0px;
+    --penumbra-map-3: 0px 3px 4px 0px;
+    --penumbra-map-4: 0px 4px 5px 0px;
+    --penumbra-map-5: 0px 5px 8px 0px;
+    --penumbra-map-6: 0px 6px 10px 0px;
+    --penumbra-map-7: 0px 7px 10px 1px;
+    --penumbra-map-8: 0px 8px 10px 1px;
+    --penumbra-map-9: 0px 9px 12px 1px;
+    --penumbra-map-10: 0px 10px 14px 1px;
+    --penumbra-map-11: 0px 11px 15px 1px;
+    --penumbra-map-12: 0px 12px 17px 2px;
+    --penumbra-map-13: 0px 13px 19px 2px;
+    --penumbra-map-14: 0px 14px 21px 2px;
+    --penumbra-map-15: 0px 15px 22px 2px;
+    --penumbra-map-16: 0px 16px 24px 2px;
+    --penumbra-map-17: 0px 17px 26px 2px;
+    --penumbra-map-18: 0px 18px 28px 2px;
+    --penumbra-map-19: 0px 19px 29px 2px;
+    --penumbra-map-20: 0px 20px 31px 3px;
+    --penumbra-map-21: 0px 21px 33px 3px;
+    --penumbra-map-22: 0px 22px 35px 3px;
+    --penumbra-map-23: 0px 23px 36px 3px;
+    --penumbra-map-24: 0px 24px 38px 3px;
+    --ambient-map-0: 0px 0px 0px 0px;
+    --ambient-map-1: 0px 1px 3px 0px;
+    --ambient-map-2: 0px 1px 5px 0px;
+    --ambient-map-3: 0px 1px 8px 0px;
+    --ambient-map-4: 0px 1px 10px 0px;
+    --ambient-map-5: 0px 1px 14px 0px;
+    --ambient-map-6: 0px 1px 18px 0px;
+    --ambient-map-7: 0px 2px 16px 1px;
+    --ambient-map-8: 0px 3px 14px 2px;
+    --ambient-map-9: 0px 3px 16px 2px;
+    --ambient-map-10: 0px 4px 18px 3px;
+    --ambient-map-11: 0px 4px 20px 3px;
+    --ambient-map-12: 0px 5px 22px 4px;
+    --ambient-map-13: 0px 5px 24px 4px;
+    --ambient-map-14: 0px 5px 26px 4px;
+    --ambient-map-15: 0px 6px 28px 5px;
+    --ambient-map-16: 0px 6px 30px 5px;
+    --ambient-map-17: 0px 6px 32px 5px;
+    --ambient-map-18: 0px 7px 34px 6px;
+    --ambient-map-19: 0px 7px 36px 6px;
+    --ambient-map-20: 0px 8px 38px 7px;
+    --ambient-map-21: 0px 8px 40px 7px;
+    --ambient-map-22: 0px 8px 42px 7px;
+    --ambient-map-23: 0px 9px 44px 8px;
+    --ambient-map-24: 0px 9px 46px 8px;
+}
+
+.elevation-0 {
+    box-shadow:
+        var(--umbra-map-0) rgba(var(--baseline-color) var(--umbra-opacity)),
+        var(--penumbra-map-0) rgba(var(--baseline-color) var(--penumbra-opacity)),
+        var(--ambient-map-0) rgba(var(--baseline-color) var(--ambient-opacity))
+    ;
+}
+
+.elevation-1 {
+    box-shadow:
+        var(--umbra-map-1) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-1) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-1) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-2 {
+    box-shadow:
+        var(--umbra-map-2) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-2) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-2) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-3 {
+    box-shadow:
+        var(--umbra-map-3) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-3) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-3) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-4 {
+    box-shadow:
+        var(--umbra-map-4) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-4) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-4) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-5 {
+    box-shadow:
+        var(--umbra-map-5) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-5) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-5) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-6 {
+    box-shadow:
+        var(--umbra-map-6) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-6) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-6) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-7 {
+    box-shadow:
+        var(--umbra-map-7) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-7) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-7) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-8 {
+    box-shadow:
+        var(--umbra-map-8) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-8) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-8) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-9 {
+    box-shadow:
+        var(--umbra-map-9) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-9) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-9) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-10 {
+    box-shadow:
+        var(--umbra-map-10) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-10) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-10) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-11 {
+    box-shadow:
+        var(--umbra-map-11) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-11) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-11) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-12 {
+    box-shadow:
+        var(--umbra-map-12) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-12) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-12) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-13 {
+    box-shadow:
+        var(--umbra-map-13) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-13) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-13) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-14 {
+    box-shadow:
+        var(--umbra-map-14) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-14) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-14) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-15 {
+    box-shadow:
+        var(--umbra-map-15) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-15) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-15) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-16 {
+    box-shadow:
+        var(--umbra-map-16) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-16) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-16) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-17 {
+    box-shadow:
+        var(--umbra-map-17) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-17) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-17) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-18 {
+    box-shadow:
+        var(--umbra-map-18) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-18) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-18) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-19 {
+    box-shadow:
+        var(--umbra-map-19) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-19) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-19) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-20 {
+    box-shadow:
+        var(--umbra-map-20) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-20) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-20) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-21 {
+    box-shadow:
+        var(--umbra-map-21) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-21) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-21) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-22 {
+    box-shadow:
+        var(--umbra-map-22) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-22) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-22) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-23 {
+    box-shadow:
+        var(--umbra-map-23) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-23) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-23) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
+}
+
+.elevation-24 {
+    box-shadow:
+        var(--umbra-map-24) rgba(var(--baseline-color), var(--umbra-opacity)),
+        var(--penumbra-map-24) rgba(var(--baseline-color), var(--penumbra-opacity)),
+        var(--ambient-map-24) rgba(var(--baseline-color), var(--ambient-opacity))
+    ;
 }
 </style>

@@ -1,6 +1,10 @@
 <template>
     <button
         class="btn-ripple"
+        :class="[
+        { 'btn-ripple-uppercase': !props.preventUppercase },
+        `elevation-${currentElevation}`,
+        ]"
         @mousedown="createRipple"
         :type="type"
         ref="btnRipple"
@@ -12,7 +16,7 @@
 
 <script lang="ts">
 // vue
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, ref, computed, onMounted } from 'vue';
 
 export default defineComponent({
     props: {
@@ -30,13 +34,23 @@ export default defineComponent({
         },
         elevation: {
             type: Number,
-            default: 1,
+            default: 4,
+        },
+        preventUppercase: {
+            type: Boolean,
+            default: false,
         },
     },
     // eslint-disable-next-line
     setup(props: any) {
         // refs
         const btnRipple = ref<null | HTMLElement>(null);
+
+        const isClicked = ref(false);
+        // computed
+        const currentElevation = computed(() => {
+            return props.elevation + (isClicked.value ? 4 : 0);
+        });
 
         // lifecycle hooks
         onMounted(() => {
@@ -46,17 +60,16 @@ export default defineComponent({
                     props.background,
                 );
 
-                const elevationShadowColor = props.elevation * 0.5;
-                btnRipple.value.style.setProperty(
-                    '--elevation-shadow',
-                    `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
-                );
                 btnRipple.value.style.setProperty('--color', props.color);
             }
         });
 
         // methods
         const createRipple = (event: PointerEvent) => {
+            isClicked.value = true;
+            setTimeout(() => {
+                isClicked.value = false;
+            }, 300);
             const button = event.currentTarget as HTMLElement;
 
             if (button) {
@@ -91,6 +104,7 @@ export default defineComponent({
             props,
             createRipple,
             btnRipple,
+            currentElevation,
         };
     },
 });
@@ -103,7 +117,6 @@ export default defineComponent({
     align-items: center;
     position: relative;
     overflow: hidden;
-    transition: background 400ms;
     color: var(--color);
     background: var(--background);
     padding: 10px 16px;
@@ -111,9 +124,9 @@ export default defineComponent({
     outline: 0;
     border: 0;
     border-radius: 4px;
-    box-shadow: var(--elevation-shadow);
     cursor: pointer;
     white-space: nowrap;
+    transition: background 800ms, box-shadow 300ms;
 }
 
 .btn-ripple:hover .btn-overlay {
@@ -132,6 +145,10 @@ export default defineComponent({
     bottom: 0;
     background: rgba(255, 255, 255, 0);
     transition-duration: 0.1s;
+}
+
+.btn-ripple-uppercase {
+    text-transform: uppercase;
 }
 </style>
 

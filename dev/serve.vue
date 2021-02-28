@@ -1,36 +1,33 @@
 <template>
-    <div id="app">
-        <vm-theme>
-            <vm-container>
-                <vm-page-header>
-                    Example
-                </vm-page-header>
+    <vm-theme :mode="isDarkMode ? 'dark' : 'light'">
+        <vm-container>
+            <vm-switch label="Dark mode" v-model="isDarkMode"></vm-switch>
+            <vm-page-header>
+                Example title
+            </vm-page-header>
 
-                <vm-action-button icon="fal fa-cog">Hello</vm-action-button>
-                <vm-button>Hello</vm-button>
-            </vm-container>
-        </vm-theme>
-        <vm-theme mode="dark">
-            <vm-container>
-                <vm-page-header>
-                    Example
-                </vm-page-header>
-
-                <vm-action-button icon="fal fa-cog">Hello</vm-action-button>
-                <vm-button>Hello</vm-button>
-            </vm-container>
-        </vm-theme>
-    </div>
+            <vm-button>Example Button</vm-button>
+        </vm-container>
+    </vm-theme>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-// Uncomment import and local "components" registration if library is not registered globally.
-// import { Vue3MaterialSample } from '@/entry.esm';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     name: 'ServeDev',
-    //  Vue3MaterialSample,
-    // }
+    setup() {
+        const isDarkMode = ref(false);
+
+        return {
+            isDarkMode,
+        };
+    },
 });
 </script>
+
+<style scoped>
+#app {
+    height: 100%;
+}
+</style>
