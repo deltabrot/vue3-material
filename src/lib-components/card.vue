@@ -1,10 +1,11 @@
 <template>
     <div
-        class="app-bar"
+        class="card"
         :class="[
             `elevation-${props.elevation}`,
             `elevation-background-${props.elevation}`,
         ]"
+        :style="cssProperties"
     >
         <slot></slot>
     </div>
@@ -12,7 +13,7 @@
 
 <script lang="ts">
 // vue
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
     props: {
@@ -20,18 +21,34 @@ export default defineComponent({
             type: Number,
             default: 2,
         },
+        borderRadius: {
+            type: Number,
+            default: 5,
+        },
     },
     // eslint-disable-next-line
     setup(props: any) {
+        // computed
+        const cssProperties = computed(() => {
+            return (
+                `--card-border-radius: ${props.borderRadius}px;`
+            );
+        });
+
         return {
             props,
+            cssProperties,
         };
     },
 });
 </script>
 
 <style scoped>
-.app-bar {
+.card {
+    position: relative;
     display: flex;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
 }
 </style>

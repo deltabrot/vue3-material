@@ -268,6 +268,7 @@ export default defineComponent({
     --grid-border-color: #444;
     overflow: hidden;
     font-size: 0.9rem;
+    flex: 1;
 }
 
 .grid-wrapper {

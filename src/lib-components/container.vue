@@ -21,7 +21,7 @@ export default defineComponent({
 .container {
     display: flex;
     justify-content: center;
-    padding: 0 calc(var(--default-margin) * 2);
+    padding: 0 calc(var(--default-margin) * 4);
 }
 
 .content {

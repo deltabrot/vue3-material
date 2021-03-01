@@ -33,7 +33,7 @@ export default defineComponent({
         },
         background: {
             type: String,
-            default: '#3ca354',
+            default: 'rgb(98, 0, 238)',
         },
         color: {
             type: String,
@@ -178,12 +178,12 @@ export default defineComponent({
 
 .btn-text:hover,
 .btn-outlined:hover {
-    background: rgba(var(--primary-color), 0.05);
+    background: rgba(var(--primary-color), 0.1);
 }
 
 .btn-text:focus,
 .btn-outlined:focus {
-    background: rgba(var(--primary-color), 0.15);
+    background: rgba(var(--primary-color), 0.2);
 }
 
 /* content */

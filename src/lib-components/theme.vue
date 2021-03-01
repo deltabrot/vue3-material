@@ -21,43 +21,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 .theme {
     --default-margin: 5px;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-}
 
-.light-theme {
-    --default-color: 0, 0, 0;
-    background: #ffffff;
-    color: #000;
-}
-
-.dark-theme {
-    --default-color: 255, 255, 255;
-    background: #121212;
-    color: #fff;
-}
-</style>
-
-<style>
-html {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    height: 100%;
-}
-
-#app {
-    height: 100%;
-}
-
-.theme {
     --baseline-color: 0, 0, 0;
     --umbra-opacity: 0.2;
     --penumbra-opacity: 0.14;
@@ -263,6 +234,225 @@ body {
         var(--penumbra-map-24) rgba(var(--baseline-color), var(--penumbra-opacity)),
         var(--ambient-map-24) rgba(var(--baseline-color), var(--ambient-opacity))
     ;
+}
+
+.light-theme {
+    --default-surface: 255, 255, 255;
+    --default-background: 255, 255, 255;
+    --default-color: 0, 0, 0;
+}
+
+.dark-theme {
+    --default-surface: 32, 32, 32;
+    --default-background: 24, 24, 24;
+    --default-color: 255, 255, 255;
+    --dark-overlay-color: 255, 255, 255;
+    --elevation-opacity-0: 0;
+    --elevation-opacity-1: 0.05;
+    --elevation-opacity-2: 0.07;
+    --elevation-opacity-3: 0.08;
+    --elevation-opacity-4: 0.09;
+    --elevation-opacity-5: 0.10;
+    --elevation-opacity-6: 0.11;
+    --elevation-opacity-7: 0.115;
+    --elevation-opacity-8: 0.12;
+    --elevation-opacity-9: 0.125;
+    --elevation-opacity-10: 0.13;
+    --elevation-opacity-11: 0.135;
+    --elevation-opacity-12: 0.14;
+    --elevation-opacity-13: 0.1425;
+    --elevation-opacity-14: 0.145;
+    --elevation-opacity-15: 0.1475;
+    --elevation-opacity-16: 0.15;
+    --elevation-opacity-17: 0.15125;
+    --elevation-opacity-18: 0.1525;
+    --elevation-opacity-19: 0.15375;
+    --elevation-opacity-20: 0.155;
+    --elevation-opacity-21: 0.15675;
+    --elevation-opacity-22: 0.1575;
+    --elevation-opacity-23: 0.15875;
+    --elevation-opacity-24: 0.16;
+}
+
+.theme {
+    background: rgb(var(--default-background));
+    color: rgb(var(--default-color));
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
+
+.elevation-background-0,
+.elevation-background-1,
+.elevation-background-2,
+.elevation-background-3,
+.elevation-background-4,
+.elevation-background-5,
+.elevation-background-6,
+.elevation-background-7,
+.elevation-background-8,
+.elevation-background-9,
+.elevation-background-10,
+.elevation-background-11,
+.elevation-background-12,
+.elevation-background-13,
+.elevation-background-14,
+.elevation-background-15,
+.elevation-background-16,
+.elevation-background-17,
+.elevation-background-18,
+.elevation-background-19,
+.elevation-background-20,
+.elevation-background-21,
+.elevation-background-22,
+.elevation-background-23,
+.elevation-background-24 {
+    position: relative;
+    background: var(--default-background);
+}
+
+.elevation-background-0::before,
+.elevation-background-1::before,
+.elevation-background-2::before,
+.elevation-background-3::before,
+.elevation-background-4::before,
+.elevation-background-5::before,
+.elevation-background-6::before,
+.elevation-background-7::before,
+.elevation-background-8::before,
+.elevation-background-9::before,
+.elevation-background-10::before,
+.elevation-background-11::before,
+.elevation-background-12::before,
+.elevation-background-13::before,
+.elevation-background-14::before,
+.elevation-background-15::before,
+.elevation-background-16::before,
+.elevation-background-17::before,
+.elevation-background-18::before,
+.elevation-background-19::before,
+.elevation-background-20::before,
+.elevation-background-21::before,
+.elevation-background-22::before,
+.elevation-background-23::before,
+.elevation-background-24::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.elevation-background-0::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-0));
+}
+
+.elevation-background-1::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-1));
+}
+
+.elevation-background-2::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-2));
+}
+
+.elevation-background-3::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-3));
+}
+
+.elevation-background-4::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-4));
+}
+
+.elevation-background-5::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-5));
+}
+
+.elevation-background-6::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-6));
+}
+
+.elevation-background-7::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-7));
+}
+
+.elevation-background-8::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-8));
+}
+
+.elevation-background-9::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-9));
+}
+
+.elevation-background-10::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-10));
+}
+
+.elevation-background-11::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-11));
+}
+
+.elevation-background-12::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-12));
+}
+
+.elevation-background-13::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-13));
+}
+
+.elevation-background-14::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-14));
+}
+
+.elevation-background-15::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-15));
+}
+
+.elevation-background-16::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-16));
+}
+
+.elevation-background-17::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-17));
+}
+
+.elevation-background-18::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-18));
+}
+
+.elevation-background-19::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-19));
+}
+
+.elevation-background-20::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-20));
+}
+
+.elevation-background-21::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-21));
+}
+
+.elevation-background-22::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-22));
+}
+
+.elevation-background-23::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-23));
+}
+
+.elevation-background-24::before {
+    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-24));
 }
 
 .elevation-0 {

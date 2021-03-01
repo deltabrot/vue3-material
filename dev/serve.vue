@@ -1,6 +1,6 @@
 <template>
     <vm-theme :mode="isDarkMode ? 'dark' : 'light'">
-        <vm-app-bar style="padding: 10px 5px">
+        <vm-app-bar style="padding: 10px 20px; background: rgba(98, 0, 238); color: #fff">
             <vm-switch label="Dark mode" v-model="isDarkMode"></vm-switch>
         </vm-app-bar>
         <vm-container>
@@ -8,39 +8,41 @@
                 Buttons
             </vm-page-header>
 
-            <div>
-                <vm-button>
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#808">
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#880">
-                    Button
-                </vm-button>
-            </div>
-            <div class="mt-2">
-                <vm-button type="outlined">
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#808" type="outlined">
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#880" type="outlined">
-                    Button
-                </vm-button>
-            </div>
-            <div class="mt-2">
-                <vm-button type="text">
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#808" type="text">
-                    Button
-                </vm-button>
-                <vm-button class="ml-2" background="#880" type="text">
-                    Button
-                </vm-button>
-            </div>
+            <vm-card style="padding: 10px 20px; flex-direction: column">
+                <div>
+                    <vm-button>
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#a00">
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#aa0">
+                        Button
+                    </vm-button>
+                </div>
+                <div class="mt-2">
+                    <vm-button type="outlined">
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#a00" type="outlined">
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#aa0" type="outlined">
+                        Button
+                    </vm-button>
+                </div>
+                <div class="mt-2">
+                    <vm-button type="text">
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#a00" type="text">
+                        Button
+                    </vm-button>
+                    <vm-button class="ml-2" background="#aa0" type="text">
+                        Button
+                    </vm-button>
+                </div>
+            </vm-card>
         </vm-container>
     </vm-theme>
 </template>
