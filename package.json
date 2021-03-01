@@ -1,8 +1,18 @@
 {
     "name": "vue3-material",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Vue 3 components which adhere to the material design spec",
     "license": "MIT",
+    "repository": "deltabrot/vue3-material",
+    "keywords": [
+        "material",
+        "material design",
+        "vue",
+        "vue3",
+        "component",
+        "components",
+        "typescript"
+    ],
     "main": "dist/vue3-material.ssr.js",
     "browser": "dist/vue3-material.esm.js",
     "module": "dist/vue3-material.esm.js",
