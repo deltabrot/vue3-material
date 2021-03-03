@@ -58,9 +58,11 @@ export default defineComponent({
         ];
 
         const updateConfig = () => {
-            import(`../examples/${route.params.config}`).then((res: any) => {
-                config.value = res.default;
-            });
+            import(`./documentation-config/${route.params.config}`).then(
+                (res: any) => {
+                    config.value = res.default;
+                },
+            );
         };
 
         updateConfig();
