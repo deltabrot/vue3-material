@@ -1,5 +1,11 @@
 <template>
-    <div class="navigation-drawer">
+    <div
+        class="navigation-drawer"
+        :class="[
+            `elevation-${props.elevation}`,
+            `elevation-background-${props.elevation}`,
+        ]"
+    >
         <slot></slot>
     </div>
 </template>
@@ -9,15 +15,26 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    setup() {
-        return {};
+    props: {
+        elevation: {
+            type: Number,
+            default: 2,
+        },
+    },
+    setup(props: any) {
+        return {
+            props,
+        };
     },
 });
 </script>
 
 <style scoped>
 .navigation-drawer {
-    background: #212121;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    padding: 20px 32px;
+    overflow-y: auto;
 }
 </style>

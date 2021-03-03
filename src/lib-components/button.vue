@@ -25,6 +25,8 @@ export default defineComponent({
     props: {
         type: {
             type: String,
+            validator: (prop: string) =>
+                ['contained', 'outlined', 'text'].includes(prop),
             default: 'contained',
         },
         isSubmit: {
@@ -55,7 +57,9 @@ export default defineComponent({
 
         const toRgba = (() => {
             if (props.type === 'contained') {
-                return () => { return '255, 255, 255' };
+                return () => {
+                    return '255, 255, 255';
+                };
             }
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
@@ -240,7 +244,10 @@ span.ripple {
 }
 
 .btn-ripple:active:hover span.ripple {
-    background-color: rgba(var(--primary-color), var(--visible-opacity)) !important;
+    background-color: rgba(
+        var(--primary-color),
+        var(--visible-opacity)
+    ) !important;
 }
 
 @keyframes ripple {

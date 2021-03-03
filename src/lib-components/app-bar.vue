@@ -5,6 +5,7 @@
             `elevation-${props.elevation}`,
             `elevation-background-${props.elevation}`,
         ]"
+        :style="`background: ${props.color}`"
     >
         <slot></slot>
     </div>
@@ -16,6 +17,10 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
     props: {
+        color: {
+            type: String,
+            default: '',
+        },
         elevation: {
             type: Number,
             default: 2,
@@ -32,6 +37,9 @@ export default defineComponent({
 
 <style scoped>
 .app-bar {
+    min-height: 4rem;
     display: flex;
+    width: 100%;
+    background: #fff;
 }
 </style>

@@ -24,10 +24,39 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    margin: 0;
+}
+
+#app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
+
 .theme {
     --default-margin: 5px;
+    width: 100%;
     height: 100%;
+    flex: 1;
     font-family: 'Roboto', sans-serif;
+    background: rgb(var(--default-background));
+    color: rgb(var(--default-color));
 
     --baseline-color: 0, 0, 0;
     --umbra-opacity: 0.2;
@@ -246,7 +275,7 @@ export default {
     --default-surface: 32, 32, 32;
     --default-background: 24, 24, 24;
     --default-color: 255, 255, 255;
-    --dark-overlay-color: 255, 255, 255;
+    --overlay-color: 255, 255, 255;
     --elevation-opacity-0: 0;
     --elevation-opacity-1: 0.05;
     --elevation-opacity-2: 0.07;
@@ -272,24 +301,6 @@ export default {
     --elevation-opacity-22: 0.1575;
     --elevation-opacity-23: 0.15875;
     --elevation-opacity-24: 0.16;
-}
-
-.theme {
-    background: rgb(var(--default-background));
-    color: rgb(var(--default-color));
-}
-
-html {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    height: 100%;
-}
-
-#app {
-    height: 100%;
 }
 
 .elevation-background-0,
@@ -318,7 +329,7 @@ body {
 .elevation-background-23,
 .elevation-background-24 {
     position: relative;
-    background: var(--default-background);
+    background: rgb(var(--default-background));
 }
 
 .elevation-background-0::before,
@@ -356,103 +367,103 @@ body {
 }
 
 .elevation-background-0::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-0));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-0));
 }
 
 .elevation-background-1::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-1));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-1));
 }
 
 .elevation-background-2::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-2));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-2));
 }
 
 .elevation-background-3::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-3));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-3));
 }
 
 .elevation-background-4::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-4));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-4));
 }
 
 .elevation-background-5::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-5));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-5));
 }
 
 .elevation-background-6::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-6));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-6));
 }
 
 .elevation-background-7::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-7));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-7));
 }
 
 .elevation-background-8::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-8));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-8));
 }
 
 .elevation-background-9::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-9));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-9));
 }
 
 .elevation-background-10::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-10));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-10));
 }
 
 .elevation-background-11::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-11));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-11));
 }
 
 .elevation-background-12::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-12));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-12));
 }
 
 .elevation-background-13::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-13));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-13));
 }
 
 .elevation-background-14::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-14));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-14));
 }
 
 .elevation-background-15::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-15));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-15));
 }
 
 .elevation-background-16::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-16));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-16));
 }
 
 .elevation-background-17::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-17));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-17));
 }
 
 .elevation-background-18::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-18));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-18));
 }
 
 .elevation-background-19::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-19));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-19));
 }
 
 .elevation-background-20::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-20));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-20));
 }
 
 .elevation-background-21::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-21));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-21));
 }
 
 .elevation-background-22::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-22));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-22));
 }
 
 .elevation-background-23::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-23));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-23));
 }
 
 .elevation-background-24::before {
-    background: rgba(var(--dark-overlay-color), var(--elevation-opacity-24));
+    background: rgba(var(--overlay-color), var(--elevation-opacity-24));
 }
 
 .elevation-0 {

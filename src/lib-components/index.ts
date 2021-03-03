@@ -4,6 +4,7 @@ export { default as VmAppBar } from './app-bar.vue';
 export { default as VmButton } from './button.vue';
 export { default as VmCard } from './card.vue';
 export { default as VmContainer } from './container.vue';
+export { default as VmDivider } from './divider.vue';
 export { default as VmDropdown } from './dropdown.vue';
 export { default as VmGrid } from './grid.vue';
 export { default as VmLoadingSpinner } from './loading-spinner.vue';
