@@ -4,11 +4,13 @@
             class="link"
             :class="{
                 selected: route.path === `/components/${component.name}`,
+                disabled: !component.name,
             }"
             v-for="(component, i) in components"
             :to="`/components/${component.name}`"
         >
             {{ component.title }}
+            {{ component.name ? '' : '(Incomplete)' }}
         </router-link>
     </vm-navigation-drawer>
     <vm-container style="flex: 1; margin: 30px 0; min-width: 1px;">
@@ -44,17 +46,17 @@ export default defineComponent({
             { title: 'App Bar', name: 'app-bar' },
             { title: 'Button', name: 'button' },
             { title: 'Card', name: 'card' },
-            { title: 'Container', name: 'container' },
-            { title: 'Divider', name: 'divider' },
-            { title: 'Dropdown', name: 'dropdown' },
-            { title: 'Grid', name: 'grid' },
-            { title: 'Loading Spinner', name: 'loading-spinner' },
-            { title: 'Modal', name: 'modal' },
-            { title: 'Navigation Drawer', name: 'navigation-drawer' },
-            { title: 'Page Header', name: 'page-header' },
-            { title: 'Switch', name: 'switch' },
-            { title: 'Text Field', name: 'text-field' },
-            { title: 'Theme', name: 'theme' },
+            { title: 'Container', name: '' },
+            { title: 'Divider', name: '' },
+            { title: 'Dropdown', name: '' },
+            { title: 'Grid', name: '' },
+            { title: 'Loading Spinner', name: '' },
+            { title: 'Modal', name: '' },
+            { title: 'Navigation Drawer', name: '' },
+            { title: 'Page Header', name: '' },
+            { title: 'Switch', name: '' },
+            { title: 'Text Field', name: '' },
+            { title: 'Theme', name: '' },
         ];
 
         const updateConfig = () => {
@@ -103,5 +105,10 @@ export default defineComponent({
 .selected {
     color: #007bff;
     font-weight: 500;
+}
+
+.disabled {
+    color: rgba(var(--default-color), 0.2);
+    pointer-events: none;
 }
 </style>

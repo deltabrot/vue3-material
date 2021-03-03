@@ -1,34 +1,8 @@
 export default {
     componentName: 'Card',
-    componentDescription:
-        'A card.',
+    componentDescription: 'A card component with elevation built in.',
     componentUsage: '<vm-card></vm-card>',
     propInfo: [
-        {
-            name: 'type',
-            type: "'contained' | 'outlined' | 'text'",
-            description: 'The type of card to render.',
-            default: 'contained',
-        },
-        {
-            name: 'isSubmit',
-            type: 'boolean',
-            description:
-                'Whether to treat the card as a submit card for a form.',
-            default: 'false',
-        },
-        {
-            name: 'background',
-            type: 'string',
-            description: 'The primary color of the card.',
-            default: 'rgb(98, 0, 238)',
-        },
-        {
-            name: 'color',
-            type: 'string',
-            description: 'The color of text on the card.',
-            default: '#ffffff',
-        },
         {
             name: 'elevation',
             type: 'number',
@@ -36,41 +10,44 @@ export default {
             default: '2',
         },
         {
-            name: 'preventUppercase',
-            type: 'boolean',
-            description: 'Prevent automatic uppercasing of text.',
-            default: 'false',
+            name: 'borderRadius',
+            type: 'number',
+            description: 'The border radius of the card component.',
+            default: '5',
         },
     ],
     examples: [
         {
-            title: 'Contained card',
-            description: 'A simple card with solid background color.',
-            innerHtml: `    Button`,
+            title: 'Basic card',
+            description: 'A card with default elevation.',
+            innerHtml: `    Content`,
             component: 'vm-card',
             props: {},
         },
         {
-            title: 'Contained card (modified color)',
-            description:
-                'A simple card with modified solid background color.',
-            innerHtml: `    Button`,
+            title: 'Styled card',
+            description: 'A card with increased elevation and padding.',
+            innerHtml: `    Content`,
             component: 'vm-card',
-            props: { background: '#a00' },
+            props: { style: 'padding: 10px 20px;' },
         },
         {
-            title: 'Outlined card',
-            description: 'A simple card with a single pixel border.',
-            innerHtml: `    Button`,
+            title: 'Elevated and styled card',
+            description: 'A card with increased elevation and padding.',
+            innerHtml: `    Content`,
             component: 'vm-card',
-            props: { type: 'outlined' },
+            props: { elevation: 8, style: 'padding: 10px 20px;' },
         },
         {
-            title: 'Text card',
-            description: 'A simple card with no background or border.',
-            innerHtml: `    Button`,
+            title: 'Elevated and styled card (increased border-radius)',
+            description: 'A card with increased elevation and padding.',
+            innerHtml: `    Content`,
             component: 'vm-card',
-            props: { type: 'text' },
+            props: {
+                elevation: 8,
+                style: 'padding: 10px 20px;',
+                borderRadius: 50,
+            },
         },
     ],
 };
