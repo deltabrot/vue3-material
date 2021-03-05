@@ -54,7 +54,7 @@ export default defineComponent({
             { title: 'Modal', name: '' },
             { title: 'Navigation Drawer', name: '' },
             { title: 'Page Header', name: '' },
-            { title: 'Switch', name: '' },
+            { title: 'Switch', name: 'switch' },
             { title: 'Text Field', name: '' },
             { title: 'Theme', name: '' },
         ];
@@ -105,6 +105,7 @@ export default defineComponent({
 .selected {
     color: #007bff;
     font-weight: 500;
+    pointer-events: none;
 }
 
 .disabled {

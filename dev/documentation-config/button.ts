@@ -72,5 +72,12 @@ export default {
             component: 'vm-button',
             props: { type: 'text' },
         },
+        {
+            title: 'NEW TEST',
+            description: 'A simple button with a single pixel border.',
+            innerHtml: `    Button`,
+            component: 'vm-button',
+            props: { background: '#f0f', elevation: 5 },
+        },
     ],
 };

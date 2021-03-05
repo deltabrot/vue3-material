@@ -1,11 +1,9 @@
 import { createApp } from 'vue';
 import App from './app.vue';
-import Vue3Material from '@/entry.esm';
 import router from './router';
+import Vue3Material from '@/entry.esm';
 
-const app = createApp(App);
-
-app.use(Vue3Material);
-app.use(router);
-
-app.mount('#app');
+createApp(App)
+    .use(Vue3Material)
+    .use(router)
+    .mount('#app');

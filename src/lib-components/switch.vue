@@ -52,18 +52,18 @@ export default {
 }
 
 .switch {
-    --width: 45px;
-    --switch-width: 18px;
-    --height: 24px;
+    --width: 34px;
+    --switch-size: 20px;
+    --height: 14px;
     --border-radius: 100px;
     --switch-border-radius: 50%;
-    --inner-padding: 3px;
+    --inner-padding: -1px;
 
     width: var(--width);
     min-width: var(--width);
     height: var(--height);
     cursor: pointer;
-    background-color: #999;
+    background-color: #adadad;
     border-radius: var(--border-radius);
     position: relative;
     display: inline-block;
@@ -82,6 +82,7 @@ export default {
     right: 0;
     bottom: 0;
     transition: 0.4s;
+    z-index: 1;
 }
 
 .slider:before {
@@ -90,30 +91,65 @@ export default {
     position: absolute;
     border-radius: var(--switch-border-radius);
     content: '';
-    height: calc(var(--height) - (2 * var(--inner-padding)));
-    width: var(--switch-width);
+    width: var(--switch-size);
+    height: var(--switch-size);
     left: var(--inner-padding);
-    bottom: var(--inner-padding);
-    background-color: #555;
+    top: calc((var(--height) / 2) - (var(--switch-size) / 2));
+    background-color: #fff;
     transition: 0.3s;
+    box-shadow: var(--elevation-2);
 }
 
 input:checked + .slider {
-    background: #3ca354;
+    background: rgb(177, 127, 247);
     border-radius: inherit;
 }
 
+.slider:after {
+    --padding: 12px;
+    content: '';
+    background: rgb(177, 127, 247, 0);
+    border-radius: 200px;
+    display: flex;
+    width: var(--switch-size);
+    height: var(--switch-size);
+    left: calc(var(--inner-padding) - var(--padding));
+    top: calc((var(--height) / 2) - (var(--switch-size) / 2) - var(--padding));
+    position: absolute;
+    padding: var(--padding);
+    pointer-events: none;
+    z-index: -1;
+    transition: background 0.2s, transform 0.3s;
+}
+
+input:hover + .slider:after {
+    background: rgb(173, 173, 173, 0.2);
+}
+
+input:checked + .slider:after {
+    transform: translateX(
+        calc(var(--width) - var(--switch-size) - (2 * var(--inner-padding)))
+    );
+}
+
+input:checked:hover + .slider:after {
+    background: rgb(177, 127, 247, 0.2);
+}
+
+input:checked ~ .slider:before {
+    background: rgb(98, 0, 238);
+}
+
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
     transform: translateX(
-        calc(var(--width) - var(--switch-width) - (2 * var(--inner-padding)))
+        calc(var(--width) - var(--switch-size) - (2 * var(--inner-padding)))
     );
 }
 
 .label {
-    margin-left: var(--default-margin);
+    margin-left: calc(var(--default-margin) * 3);
 }
 </style>
