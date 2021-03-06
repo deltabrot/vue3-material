@@ -55,11 +55,12 @@ export default defineComponent({
             { title: 'Navigation Drawer', name: '' },
             { title: 'Page Header', name: '' },
             { title: 'Switch', name: 'switch' },
-            { title: 'Text Field', name: '' },
+            { title: 'Text Field', name: 'text-field' },
             { title: 'Theme', name: '' },
         ];
 
         const updateConfig = () => {
+            window.scrollTo(0, 0);
             import(`./documentation-config/${route.params.config}`).then(
                 (res: any) => {
                     config.value = res.default;

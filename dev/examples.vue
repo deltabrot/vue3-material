@@ -9,9 +9,7 @@
         <div class="example-result-title">Implementation</div>
         <pre
             class="code-block"
-        ><code>&lt;{{example.component}}{{attributes(example.props)}}&gt;
-{{ example.innerHtml }}
-&lt;/{{example.component}}&gt;</code></pre>
+        ><code>&lt;{{example.component}}{{attributes(example.props)}}&gt;{{ example.innerHtml ? '\n' + example.innerHtml + '\n' : '' }}&lt;/{{example.component}}&gt;</code></pre>
         <div class="example-result-title">Interactive result</div>
         <div class="example-result">
             <component :is="example.component" v-bind="example.props">{{

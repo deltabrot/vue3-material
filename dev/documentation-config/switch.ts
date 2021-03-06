@@ -1,6 +1,6 @@
 export default {
     componentName: 'Switch',
-    componentDescription: 'A switch component which replicates checkbox functionality',
+    componentDescription: 'A switch component which replicates checkbox functionality.',
     componentUsage: '<vm-switch></vm-switch>',
     propInfo: [
         {
