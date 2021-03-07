@@ -1,11 +1,19 @@
 <template>
     <vm-container style="flex: 1; margin: 30px 0; min-width: 1px;">
         <vm-card style="padding: 50px; margin-bottom: 20px">
-            Value: {{ x }}
+            <div>Value: {{ x }}</div>
+            <div>Number value: {{ y }}</div>
         </vm-card>
         <vm-card style="padding: 50px">
             <div style="flex: 1;">
                 <vm-text-field v-model="x" label="Value"> </vm-text-field>
+                <vm-text-field
+                    style="margin-top: 40px"
+                    type="number"
+                    v-model="y"
+                    label="Value"
+                >
+                </vm-text-field>
                 <vm-text-field style="margin-top: 40px" label="Test">
                 </vm-text-field>
             </div>
@@ -54,6 +62,7 @@ import { VmModal } from '@/entry.esm';
 export default defineComponent({
     setup() {
         const x = ref('');
+        const y = ref<number>();
         const testModal = ref<InstanceType<typeof VmModal>>();
 
         const rowData = [
@@ -80,6 +89,7 @@ export default defineComponent({
 
         return {
             x,
+            y,
             rowData,
             gridConfig,
             testModal,

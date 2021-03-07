@@ -10,16 +10,22 @@ export default {
             default: 'N/A',
         },
         {
+            name: 'variant',
+            type: '\'filled\' | \'outlined\'',
+            description: 'The type of the HTML input field.',
+            default: 'text',
+        },
+        {
             name: 'label',
             type: 'string',
             description: 'A label to associate with the text field.',
             default: 'Default',
         },
         {
-            name: 'isPassword',
-            type: 'boolean',
-            description: 'When true, will hide the input.',
-            default: 'false',
+            name: 'type',
+            type: '\'text\' | \'number\' | \'password\'',
+            description: 'The type of the HTML input field.',
+            default: 'text',
         },
     ],
     examples: [

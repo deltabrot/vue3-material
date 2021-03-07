@@ -2,7 +2,7 @@
     <div class="text-field" :class="'text-field-' + props.variant">
         <input
             class="text-field-input"
-            :type="isPassword ? 'password' : 'text'"
+            :type="type"
             ref="textField"
             :value="modelValue"
             @input="updateValue"
@@ -30,19 +30,23 @@ import { defineComponent, ref, computed } from 'vue';
 export default defineComponent({
     props: {
         modelValue: {
-            type: String,
+            type: [String, Number],
         },
         variant: {
             type: String,
+            validator: (prop: string) =>
+                ['filled', 'outlined'].includes(prop),
             default: 'filled',
         },
         label: {
             type: String,
             default: 'Default',
         },
-        isPassword: {
-            type: Boolean,
-            default: false,
+        type: {
+            type: String,
+            validator: (prop: string) =>
+                ['text', 'number', 'password'].includes(prop),
+            default: 'text',
         },
     },
     // eslint-disable-next-line
@@ -53,16 +57,24 @@ export default defineComponent({
         // computed
         const isInputFilled = computed(() => {
             if (props.modelValue === undefined) {
-                return true;
+                return false;
+            }
+            if (props.type === 'number') {
+                return props.modelValue !== NaN;
             }
             return props.modelValue.length > 0;
         });
 
         // methods
         const updateValue = (e: InputEvent) => {
-            if (props.modelValue !== undefined) {
-                const val = (e.target as HTMLInputElement).value;
-                context.emit('update:modelValue', val);
+            const val = (e.target as HTMLInputElement).value;
+            if (val !== undefined) {
+                if (props.type === 'number') {
+                    const numberVal = val !== '' ? parseFloat(val) : undefined;
+                    context.emit('update:modelValue', numberVal);
+                } else {
+                    context.emit('update:modelValue', val);
+                }
             }
         };
 
@@ -82,7 +94,9 @@ export default defineComponent({
     --label-padding: 6px;
     --horizontal-padding: 16px;
     --border: 1px solid rgba(var(--default-color), 0.42);
-    --height: calc(var(--font-size) + (var(--padding-top) + var(--padding-bottom)) + 2px);
+    --height: calc(
+        var(--font-size) + (var(--padding-top) + var(--padding-bottom)) + 2px
+    );
     display: flex;
     align-items: center;
     width: 100%;
@@ -230,11 +244,11 @@ export default defineComponent({
 input:focus ~ .text-field-left,
 input:focus ~ .text-field-notch,
 input:focus ~ .text-field-right {
-    border-color: #2c60d1;
+    border-color: #4c77d6;
 }
 
 input:focus ~ .text-field-notch .text-field-label {
-    color: #2c60d1;
+    color: #4c77d6;
 }
 
 input:-webkit-autofill,
@@ -243,5 +257,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgb(var(--default-color));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
 }
 </style>

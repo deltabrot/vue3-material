@@ -100,7 +100,7 @@ export default {
 }
 
 input:checked + .slider {
-    background: rgb(177, 127, 247);
+    background: rgb(125, 226, 119);
     border-radius: inherit;
 }
 
@@ -132,11 +132,11 @@ input:checked + .slider:after {
 }
 
 input:checked:hover + .slider:after {
-    background: rgb(177, 127, 247, 0.2);
+    background: rgba(46, 158, 40, 0.2);
 }
 
 input:checked ~ .slider:before {
-    background: rgb(98, 0, 238);
+    background: rgb(46, 158, 40);
 }
 
 input:focus + .slider {
