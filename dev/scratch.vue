@@ -6,8 +6,19 @@
         <vm-card style="padding: 50px">
             <div style="flex: 1;">
                 <vm-text-field v-model="x" label="Value"> </vm-text-field>
-                <vm-text-field style="margin-top: 40px" label="Test"> </vm-text-field>
+                <vm-text-field style="margin-top: 40px" label="Test">
+                </vm-text-field>
             </div>
+        </vm-card>
+        <vm-card style="margin-top: 20px">
+            <vm-card-header>
+                router-link example
+            </vm-card-header>
+            <vm-card-content>
+                <vm-button routerPath="/components/app-bar">
+                    Go to /components/app-bar
+                </vm-button>
+            </vm-card-content>
         </vm-card>
     </vm-container>
 </template>

@@ -11,6 +11,18 @@ export default {
             default: 'contained',
         },
         {
+            name: 'routerPath',
+            type: 'string',
+            description: 'If this value is set, the button will become a router-link and will direct the router to this path.',
+            default: '',
+        },
+        {
+            name: 'isDisabled',
+            type: 'boolean',
+            description: 'If true, the button will be disabled.',
+            default: 'false',
+        },
+        {
             name: 'isSubmit',
             type: 'boolean',
             description:
@@ -72,7 +84,7 @@ export default {
                 'A simple button with modified solid background color, illustrates the text color changing automatically based on the primary color.',
             innerHtml: `    BUTTON`,
             component: 'vm-button',
-            props: { primaryColor: '200, 0, 200', isAutoTextColor: true },
+            props: { primaryColor: '86, 232, 220', isAutoTextColor: true },
         },
     ],
 };

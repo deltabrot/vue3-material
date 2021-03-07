@@ -3,6 +3,8 @@ export { default as VmActionButton } from './action-button.vue';
 export { default as VmAppBar } from './app-bar.vue';
 export { default as VmButton } from './button.vue';
 export { default as VmCard } from './card.vue';
+export { default as VmCardContent } from './card-content.vue';
+export { default as VmCardHeader } from './card-header.vue';
 export { default as VmContainer } from './container.vue';
 export { default as VmDivider } from './divider.vue';
 export { default as VmDropdown } from './dropdown.vue';

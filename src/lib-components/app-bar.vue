@@ -5,7 +5,6 @@
             `elevation-${props.elevation}`,
             `elevation-background-${props.elevation}`,
         ]"
-        :style="style"
     >
         <slot></slot>
     </div>

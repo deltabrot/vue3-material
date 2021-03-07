@@ -7,6 +7,8 @@ export const VmActionButton: DefineComponent<{}, {}, any>;
 export const VmAppBar: DefineComponent<{}, {}, any>;
 export const VmButton: DefineComponent<{}, {}, any>;
 export const VmCard: DefineComponent<{}, {}, any>;
+export const VmCardContent: DefineComponent<{}, {}, any>;
+export const VmCardHeader: DefineComponent<{}, {}, any>;
 export const VmContainer: DefineComponent<{}, {}, any>;
 export const VmDivider: DefineComponent<{}, {}, any>;
 export const VmDropdown: DefineComponent<{}, {}, any>;

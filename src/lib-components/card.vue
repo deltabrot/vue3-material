@@ -46,7 +46,6 @@ export default defineComponent({
 <style scoped>
 .card {
     position: relative;
-    display: flex;
     border-radius: var(--card-border-radius);
     overflow: hidden;
     transition: box-shadow 0.2s;

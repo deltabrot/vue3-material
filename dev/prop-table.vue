@@ -23,7 +23,7 @@
                     <td>
                         <code>{{ pi.default }}</code>
                     </td>
-                    <td>{{ pi.description }}</td>
+                    <td style="white-space: normal">{{ pi.description }}</td>
                 </tr>
             </tbody>
         </table>
@@ -51,6 +51,8 @@ export default defineComponent({
 
 <style scoped>
 .props-table-wrapper {
+    border-radius: 6px;
+    border: 1px solid rgba(var(--default-color), 0.1);
     overflow-x: auto;
 }
 
@@ -58,8 +60,6 @@ export default defineComponent({
     width: 100%;
     border-spacing: 0;
     border-collapse: separate;
-    border: 1px solid rgba(var(--default-color), 0.1);
-    border-radius: 6px;
     min-width: 0;
 }
 

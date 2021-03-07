@@ -1,17 +1,19 @@
 <template>
-    <button
+    <component
         class="btn-ripple"
-        :class="[`btn-${props.variant}`]"
+        :class="[`btn-${props.variant}`, {'disabled': isDisabled}]"
         :style="cssProperties"
         @mousedown="createRipple"
         :type="isSubmit ? 'submit' : 'button'"
         ref="btnRipple"
+        :to="routerPath"
+        :is="routerPath ? 'router-link' : 'button'"
     >
         <div class="btn-overlay"></div>
         <div class="content">
             <slot></slot>
         </div>
-    </button>
+    </component>
 </template>
 
 <script lang="ts">
@@ -25,6 +27,14 @@ export default defineComponent({
             validator: (prop: string) =>
                 ['contained', 'outlined', 'text'].includes(prop),
             default: 'contained',
+        },
+        routerPath: {
+            type: String,
+            default: '',
+        },
+        isDisabled: {
+            type: Boolean,
+            default: false,
         },
         isSubmit: {
             type: Boolean,
@@ -85,8 +95,10 @@ export default defineComponent({
                 `--ripple-color: ${
                     props.variant !== 'contained'
                         ? props.primaryColor
-                        : lightOrDark(props.primaryColor) === 'light'
-                        ? '0, 0, 0'
+                        : props.isAutoTextColor
+                        ? lightOrDark(props.primaryColor) === 'light'
+                            ? '0, 0, 0'
+                            : '255, 255, 255'
                         : '255, 255, 255'
                 };` +
                 `--default-elevation: var(--elevation-${props.elevation});` +
@@ -213,6 +225,7 @@ export default defineComponent({
     cursor: pointer;
     white-space: nowrap;
     box-sizing: border-box;
+    text-decoration: none;
     transition: background 100ms, box-shadow 300ms;
 }
 
@@ -223,6 +236,11 @@ export default defineComponent({
 
 .btn-contained:active:hover {
     box-shadow: var(--active-elevation);
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 </style>
 
