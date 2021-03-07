@@ -6,14 +6,6 @@
             ref="textField"
             :value="modelValue"
             @input="updateValue"
-            v-if="modelValue !== undefined"
-        />
-        <input
-            class="text-field-input"
-            :type="isPassword ? 'password' : 'text2'"
-            ref="textField"
-            @input="updateValue"
-            v-if="modelValue === undefined"
         />
         <div class="text-field-left"></div>
         <div
@@ -33,7 +25,7 @@
 
 <script lang="ts">
 // vue
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
     props: {
@@ -59,14 +51,15 @@ export default defineComponent({
         const textField = ref<null | HTMLInputElement>(null);
 
         // computed
-        const isInputFilled = ref(false);
+        const isInputFilled = computed(() => {
+            if (props.modelValue === undefined) {
+                return true;
+            }
+            return props.modelValue.length > 0;
+        });
 
         // methods
         const updateValue = (e: InputEvent) => {
-            if (textField.value) {
-                isInputFilled.value = textField.value.value.length > 0;
-            }
-
             if (props.modelValue !== undefined) {
                 const val = (e.target as HTMLInputElement).value;
                 context.emit('update:modelValue', val);

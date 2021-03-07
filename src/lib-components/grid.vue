@@ -318,7 +318,7 @@ export default defineComponent({
 }
 
 .grid tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(var(--default-color), 0.02);
     transition-duration: 0.1s;
 }
 
@@ -377,7 +377,7 @@ export default defineComponent({
     > .pagination-wrapper
     > .page-controls
     > .page-control-button:hover {
-    color: rgb(var(--default-color), 0.2);
+    color: rgb(var(--default-color), 0.8);
     transition-duration: 0.1s;
 }
 
