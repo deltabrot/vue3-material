@@ -1,10 +1,7 @@
 <template>
     <button
         class="btn-ripple"
-        :class="[
-            { 'btn-ripple-uppercase': !props.preventUppercase },
-            `btn-${type}`,
-        ]"
+        :class="[`btn-${props.variant}`]"
         :style="cssProperties"
         @mousedown="createRipple"
         :type="isSubmit ? 'submit' : 'button'"
@@ -23,7 +20,7 @@ import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
     props: {
-        type: {
+        variant: {
             type: String,
             validator: (prop: string) =>
                 ['contained', 'outlined', 'text'].includes(prop),
@@ -33,21 +30,13 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
-        background: {
+        primaryColor: {
             type: String,
-            default: 'rgb(98, 0, 238)',
-        },
-        color: {
-            type: String,
-            default: '#ffffff',
+            default: '98, 0, 238',
         },
         elevation: {
             type: Number,
             default: 2,
-        },
-        preventUppercase: {
-            type: Boolean,
-            default: false,
         },
     },
     // eslint-disable-next-line
@@ -55,38 +44,45 @@ export default defineComponent({
         // refs
         const btnRipple = ref<null | HTMLElement>(null);
 
-        const toRgba = (() => {
-            if (props.type === 'contained') {
-                return () => {
-                    return '255, 255, 255';
-                };
+        // methods
+        const lightOrDark = (color: string) => {
+            let rgbArray = color.split(',');
+            if (rgbArray.length !== 3) {
+                return 'light';
             }
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
 
-            canvas.width = 1;
-            canvas.height = 1;
+            let r = parseInt(rgbArray[0]);
+            let g = parseInt(rgbArray[1]);
+            let b = parseInt(rgbArray[2]);
 
-            return (color: string) => {
-                if (!context) {
-                    return '255, 255, 255';
-                }
+            // HSP equation from http://alienryderflex.com/hsp.html
+            let hsp = Math.sqrt(
+                0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b),
+            );
 
-                context.fillStyle = color;
-                context.fillRect(0, 0, 1, 1);
-
-                var data = context.getImageData(0, 0, 1, 1).data;
-
-                return `${data[0]}, ${data[1]}, ${data[2]}`;
-            };
-        })();
+            if (hsp > 127.5) {
+                return 'light';
+            } else {
+                return 'dark';
+            }
+        };
 
         // computed
         const cssProperties = computed(() => {
             return (
-                `--background: ${props.background};` +
-                `--color: ${props.color};` +
-                `--primary-color: ${toRgba(props.background)};` +
+                `--primary-color: ${props.primaryColor};` +
+                `--text-color: ${
+                    lightOrDark(props.primaryColor) === 'light'
+                        ? '0, 0, 0'
+                        : '255, 255, 255'
+                };` +
+                `--ripple-color: ${
+                    props.variant !== 'contained'
+                        ? props.primaryColor
+                        : lightOrDark(props.primaryColor) === 'light'
+                        ? '0, 0, 0'
+                        : '255, 255, 255'
+                };` +
                 `--default-elevation: var(--elevation-${props.elevation});` +
                 `--focus-elevation: var(--elevation-${props.elevation + 2});` +
                 `--active-elevation: var(--elevation-${props.elevation + 6});`
@@ -140,8 +136,8 @@ export default defineComponent({
 <style scoped>
 /* contained */
 .btn-contained {
-    color: var(--color);
-    background: var(--background);
+    color: rgb(var(--text-color));
+    background: rgb(var(--primary-color));
     box-shadow: var(--default-elevation);
     border: 0;
     padding: 10px 16px;
@@ -168,14 +164,14 @@ export default defineComponent({
 /* outlined and text */
 .btn-outlined {
     background: none;
-    color: var(--background);
-    border: 1px solid var(--background);
+    color: rgb(var(--primary-color));
+    border: 1px solid rgb(var(--primary-color));
     padding: 10px 15px;
 }
 
 .btn-text {
     background: none;
-    color: var(--background);
+    color: rgb(var(--primary-color));
     border: 0;
     padding: 10px 16px;
 }
@@ -222,10 +218,6 @@ export default defineComponent({
 .btn-contained:active:hover {
     box-shadow: var(--active-elevation);
 }
-
-.btn-ripple-uppercase {
-    text-transform: uppercase;
-}
 </style>
 
 <style>
@@ -236,8 +228,8 @@ span.ripple {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    background-color: rgba(var(--primary-color), 0);
-    box-shadow: 0 0 5px 5px rgba(var(--primary-color), var(--visible-opacity));
+    background-color: rgba(var(--ripple-color), 0);
+    box-shadow: 0 0 5px 5px rgba(var(--ripple-color), var(--visible-opacity));
     animation: ripple 450ms ease-in;
     transform: scale(4);
     transition: background-color 0.2s;
@@ -245,22 +237,22 @@ span.ripple {
 
 .btn-ripple:active:hover span.ripple {
     background-color: rgba(
-        var(--primary-color),
+        var(--ripple-color),
         var(--visible-opacity)
     ) !important;
 }
 
 @keyframes ripple {
     0% {
-        background-color: rgba(var(--primary-color), var(--visible-opacity));
+        background-color: rgba(var(--ripple-color), var(--visible-opacity));
         transform: scale(0);
     }
     66% {
-        background-color: rgba(var(--primary-color), var(--visible-opacity));
+        background-color: rgba(var(--ripple-color), var(--visible-opacity));
         transform: scale(4);
     }
     100% {
-        background-color: rgba(var(--primary-color), 0);
+        background-color: rgba(var(--ripple-color), 0);
     }
 }
 </style>

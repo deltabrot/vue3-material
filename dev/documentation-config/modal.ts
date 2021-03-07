@@ -1,13 +1,13 @@
 export default {
     componentName: 'Button',
     componentDescription:
-        'A regular button which can be used to trigger actions or as a router-link. The text color of a contained button is determined by the lightness of the chosen primary color.',
+        'A regular button which can be used to trigger actions or as a router-link.',
     componentUsage: '<vm-button></vm-button>',
     propInfo: [
         {
-            name: 'variant',
+            name: 'type',
             type: "'contained' | 'outlined' | 'text'",
-            description: 'The variant of button to render.',
+            description: 'The type of button to render.',
             default: 'contained',
         },
         {
@@ -18,10 +18,16 @@ export default {
             default: 'false',
         },
         {
-            name: 'primaryColor',
+            name: 'background',
             type: 'string',
-            description: 'The primary color of the button, must in the form "r, g, b".',
-            default: '98, 0, 238',
+            description: 'The primary color of the button.',
+            default: 'rgb(98, 0, 238)',
+        },
+        {
+            name: 'color',
+            type: 'string',
+            description: 'The color of text on the button.',
+            default: '#ffffff',
         },
         {
             name: 'elevation',
@@ -40,7 +46,7 @@ export default {
         {
             title: 'Contained button',
             description: 'A simple button with solid background color.',
-            innerHtml: `    BUTTON`,
+            innerHtml: `    Button`,
             component: 'vm-button',
             props: {},
         },
@@ -48,31 +54,30 @@ export default {
             title: 'Contained button (modified color)',
             description:
                 'A simple button with modified solid background color.',
-            innerHtml: `    BUTTON`,
+            innerHtml: `    Button`,
             component: 'vm-button',
-            props: { primaryColor: '170, 0, 0' },
+            props: { background: '#a00' },
         },
         {
             title: 'Outlined button',
             description: 'A simple button with a single pixel border.',
-            innerHtml: `    BUTTON`,
+            innerHtml: `    Button`,
             component: 'vm-button',
-            props: { variant: 'outlined' },
+            props: { type: 'outlined' },
         },
         {
             title: 'Text button',
             description: 'A simple button with no background or border.',
-            innerHtml: `    BUTTON`,
+            innerHtml: `    Button`,
             component: 'vm-button',
-            props: { variant: 'text' },
+            props: { type: 'text' },
         },
         {
-            title: 'Contained button (modified text color)',
-            description:
-                'A simple button with modified solid background color, illustrates the text color changing automatically based on the primary color.',
-            innerHtml: `    BUTTON`,
+            title: 'NEW TEST',
+            description: 'A simple button with a single pixel border.',
+            innerHtml: `    Button`,
             component: 'vm-button',
-            props: { primaryColor: '200, 0, 200' },
+            props: { background: '#f0f', elevation: 5 },
         },
     ],
 };

@@ -39,7 +39,16 @@ export default defineComponent({
     components: {
         VmActionButton,
     },
-    props: ['title', 'isPreventClose'],
+    props: {
+        title: {
+            type: String,
+            default: '',
+        },
+        isPreventClose: {
+            type: Boolean,
+            default: false,
+        },
+    },
     // eslint-disable-next-line
     setup(props: any) {
         // properties

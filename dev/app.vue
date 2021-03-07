@@ -1,6 +1,6 @@
 <template>
     <vm-theme :mode="isDarkMode ? 'dark' : 'light'">
-        <vm-app-bar class="doc-app-bar" color="rgb(15, 112, 216)">
+        <vm-app-bar class="doc-app-bar">
             <div class="logo">vue3-material</div>
             <vm-switch label="Dark mode" v-model="isDarkMode"></vm-switch>
         </vm-app-bar>
@@ -37,12 +37,14 @@ export default defineComponent({
     height: 100%;
 }
 
-.doc-app-bar {
+.app-bar.doc-app-bar {
     position: sticky !important;
     top: 0;
     padding: 10px 20px;
-    background: rgba(98, 0, 238);
-    color: #fff;
+    /* background: rgba(98, 0, 238);
+    color: #fff; */
+    background: rgb(15, 112, 216);
+    color: rgb(255, 255, 255);
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
