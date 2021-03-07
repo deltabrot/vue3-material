@@ -6,7 +6,7 @@ export default {
     propInfo: [
         {
             name: 'variant',
-            type: "'contained' | 'outlined' | 'text'",
+            type: '\'contained\' | \'outlined\' | \'text\'',
             description: 'The variant of button to render.',
             default: 'contained',
         },
@@ -30,9 +30,9 @@ export default {
             default: '2',
         },
         {
-            name: 'preventUppercase',
+            name: 'isAutoTextColor',
             type: 'boolean',
-            description: 'Prevent automatic uppercasing of text.',
+            description: 'Automatically determine text color based on primary color.',
             default: 'false',
         },
     ],
@@ -72,7 +72,7 @@ export default {
                 'A simple button with modified solid background color, illustrates the text color changing automatically based on the primary color.',
             innerHtml: `    BUTTON`,
             component: 'vm-button',
-            props: { primaryColor: '200, 0, 200' },
+            props: { primaryColor: '200, 0, 200', isAutoTextColor: true },
         },
     ],
 };

@@ -38,6 +38,10 @@ export default defineComponent({
             type: Number,
             default: 2,
         },
+        isAutoTextColor: {
+            type: Boolean,
+            default: false,
+        },
     },
     // eslint-disable-next-line
     setup(props: any) {
@@ -72,8 +76,10 @@ export default defineComponent({
             return (
                 `--primary-color: ${props.primaryColor};` +
                 `--text-color: ${
-                    lightOrDark(props.primaryColor) === 'light'
-                        ? '0, 0, 0'
+                    props.isAutoTextColor
+                        ? lightOrDark(props.primaryColor) === 'light'
+                            ? '0, 0, 0'
+                            : '255, 255, 255'
                         : '255, 255, 255'
                 };` +
                 `--ripple-color: ${

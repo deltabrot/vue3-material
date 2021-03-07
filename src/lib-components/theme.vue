@@ -1,5 +1,5 @@
 <template>
-    <div class="theme" :class="props.mode + '-theme'" ref="theme">
+    <div id="app-theme" class="theme" :class="props.mode + '-theme'" ref="theme">
         <slot></slot>
     </div>
 </template>

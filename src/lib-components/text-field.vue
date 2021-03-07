@@ -1,19 +1,19 @@
 <template>
-    <div class="text-field" :class="'text-field-' + props.variety">
+    <div class="text-field" :class="'text-field-' + props.variant">
         <input
             class="text-field-input"
             :type="isPassword ? 'password' : 'text'"
             ref="textField"
             :value="modelValue"
             @input="updateValue"
-            v-if="modelValue"
+            v-if="modelValue !== undefined"
         />
         <input
             class="text-field-input"
-            :type="isPassword ? 'password' : 'text'"
+            :type="isPassword ? 'password' : 'text2'"
             ref="textField"
             @input="updateValue"
-            v-if="!modelValue"
+            v-if="modelValue === undefined"
         />
         <div class="text-field-left"></div>
         <div
@@ -39,10 +39,8 @@ export default defineComponent({
     props: {
         modelValue: {
             type: String,
-            default: '',
-            required: true,
         },
-        variety: {
+        variant: {
             type: String,
             default: 'filled',
         },
@@ -69,7 +67,7 @@ export default defineComponent({
                 isInputFilled.value = textField.value.value.length > 0;
             }
 
-            if (props.modelValue) {
+            if (props.modelValue !== undefined) {
                 const val = (e.target as HTMLInputElement).value;
                 context.emit('update:modelValue', val);
             }
@@ -113,6 +111,12 @@ export default defineComponent({
     --padding-bottom: 18px;
 }
 
+.text-field-outlined:hover .text-field-left,
+.text-field-outlined:hover .text-field-notch,
+.text-field-outlined:hover .text-field-right {
+    --border: 1px solid rgba(var(--default-color), 0.87);
+}
+
 .text-field-filled .text-field-left,
 .text-field-filled .text-field-notch,
 .text-field-filled .text-field-right {
@@ -123,6 +127,7 @@ export default defineComponent({
 .text-field-filled:hover .text-field-notch,
 .text-field-filled:hover .text-field-right {
     background: rgba(var(--default-color), 0.06);
+    --border: 1px solid rgba(var(--default-color), 0.87);
 }
 
 .text-field-left,
@@ -142,6 +147,10 @@ export default defineComponent({
 }
 
 .text-field-notch {
+    min-height: var(--height);
+    max-height: var(--height);
+    padding-top: 18px;
+    padding-bottom: 18px;
 }
 
 .text-field-left {
@@ -233,5 +242,13 @@ input:focus ~ .text-field-right {
 
 input:focus ~ .text-field-notch .text-field-label {
     color: #2c60d1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgb(var(--default-color));
 }
 </style>

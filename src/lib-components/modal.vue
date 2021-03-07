@@ -1,5 +1,5 @@
 <template>
-    <teleport to="body">
+    <teleport to="#app-theme">
         <div class="modal">
             <div class="modal-pane" :class="{ 'modal-visible': isVisible }">
                 <div class="modal-header">

@@ -42,7 +42,7 @@ export default {
             description: 'A text-field which can be toggled on/off.',
             innerHtml: ``,
             component: 'vm-text-field',
-            props: { label: 'Custom field name', variety: 'outlined' },
+            props: { label: 'Custom field name', variant: 'outlined' },
         },
     ],
 };
