@@ -47,7 +47,7 @@ export default defineComponent({
     color: rgb(255, 255, 255);
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .logo {
@@ -57,7 +57,6 @@ export default defineComponent({
 .main {
     display: flex;
     width: 100%;
-    background: rgba(var(--default-color), 0.01);
 }
 
 .component-content {
@@ -66,6 +65,7 @@ export default defineComponent({
 
 .code-block {
     background: rgba(var(--default-color), 0.03);
+    border: 1px solid rgba(var(--default-color), 0.1);
     border-radius: 6px;
     padding: 16px;
     margin: 0;

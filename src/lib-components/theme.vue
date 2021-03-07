@@ -267,12 +267,12 @@ body {
 
 .light-theme {
     --default-surface: 255, 255, 255;
-    --default-background: 255, 255, 255;
+    --default-background: 250, 250, 250;
     --default-color: 0, 0, 0;
 }
 
 .dark-theme {
-    --default-surface: 32, 32, 32;
+    --default-surface: 24, 24, 24;
     --default-background: 24, 24, 24;
     --default-color: 255, 255, 255;
     --overlay-color: 255, 255, 255;
@@ -329,7 +329,7 @@ body {
 .elevation-background-23,
 .elevation-background-24 {
     position: relative;
-    background: rgb(var(--default-background));
+    background: rgb(var(--default-surface));
 }
 
 .elevation-background-0::before,

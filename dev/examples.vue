@@ -71,6 +71,7 @@ export default defineComponent({
 
 .example-result {
     background: rgba(var(--default-color), 0.03);
+    border: 1px solid rgba(var(--default-color), 0.1);
     padding: 32px 16px;
     border-radius: 6px;
     display: flex;

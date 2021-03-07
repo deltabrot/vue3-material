@@ -22,6 +22,6 @@ export default defineComponent({
 
 <style scoped>
 .card-content {
-    padding: 10px 20px;
+    padding: 15px 20px;
 }
 </style>

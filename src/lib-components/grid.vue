@@ -141,7 +141,7 @@ export default defineComponent({
         },
         isLoading: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         maxRows: {
             type: Number,
@@ -265,7 +265,7 @@ export default defineComponent({
 
 <style scoped>
 .grid-container {
-    --grid-border-color: #444;
+    --grid-border-color: rgba(var(--default-color), 0.3);
     overflow: hidden;
     font-size: 0.9rem;
     flex: 1;
@@ -284,7 +284,7 @@ export default defineComponent({
 }
 
 .grid thead tr {
-    color: #fff;
+    color: rgb(var(--default-color));
     text-align: left;
     border-bottom: 1px solid var(--grid-border-color);
 }
@@ -309,7 +309,7 @@ export default defineComponent({
 }
 
 .grid tbody tr {
-    border-bottom: 1px solid var(--grid-border-color);
+    border-bottom: 1px solid rgba(var(--default-color), 0.1);
     transition-duration: 0.1s;
 }
 
@@ -348,7 +348,7 @@ export default defineComponent({
 
 .pagination {
     padding: 10px 10px;
-    color: #fff;
+    color: rgb(var(--default-color));
     border-top: 1px solid var(--grid-border-color);
 }
 
@@ -366,7 +366,7 @@ export default defineComponent({
 }
 
 .pagination > .pagination-wrapper > .page-controls > .page-control-button {
-    color: #888;
+    color: rgb(var(--default-color), 0.4);
     padding: 0 3px;
     margin: 0 10px;
     cursor: pointer;
@@ -377,7 +377,7 @@ export default defineComponent({
     > .pagination-wrapper
     > .page-controls
     > .page-control-button:hover {
-    color: var(--color-secondary);
+    color: rgb(var(--default-color), 0.2);
     transition-duration: 0.1s;
 }
 

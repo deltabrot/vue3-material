@@ -51,6 +51,7 @@ export default defineComponent({
 
 <style scoped>
 .props-table-wrapper {
+    background: rgb(var(--default-surface));
     border-radius: 6px;
     border: 1px solid rgba(var(--default-color), 0.1);
     overflow-x: auto;

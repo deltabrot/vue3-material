@@ -1,14 +1,30 @@
 <template>
-    <div class="divider"></div>
+    <div class="divider" :style="cssProperties"></div>
 </template>
 
 <script lang="ts">
 // vue
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    setup() {
-        return {};
+    props: {
+        spacing: {
+            type: Number,
+            default: 50,
+        },
+    },
+    // eslint-disable-next-line
+    setup(props: any) {
+        // computed
+        const cssProperties = computed(() => {
+            return (
+                `--spacing: ${props.spacing}px;`
+            );
+        });
+
+        return {
+            cssProperties,
+        };
     },
 });
 </script>
@@ -16,8 +32,8 @@ export default defineComponent({
 <style scoped>
 .divider {
     width: 100%;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
+    padding-bottom: var(--spacing);
+    margin-bottom: var(--spacing);
     border-bottom: 1px solid rgba(var(--default-color), 0.1);
 }
 </style>

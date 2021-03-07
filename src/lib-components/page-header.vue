@@ -20,6 +20,6 @@ export default defineComponent({
     font-weight: 500;
     font-size: 1.8rem;
     margin-top: calc(var(--default-margin) * 4);
-    margin-bottom: calc(var(--default-margin) * 4);
+    margin-bottom: calc(var(--default-margin) * 6);
 }
 </style>

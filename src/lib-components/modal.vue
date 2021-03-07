@@ -1,24 +1,15 @@
 <template>
     <teleport to="#app-theme">
         <div class="modal">
-            <div class="modal-pane" :class="{ 'modal-visible': isVisible }">
-                <div class="modal-header">
-                    <div class="modal-title">
-                        {{ props.title }}
-                    </div>
-                    <vm-action-button
-                        class="exit"
-                        background="rgba(0,0,0,0)"
-                        :elevation="0"
-                        icon="fal fa-times"
-                        :isSmall="true"
-                        @click="hide"
-                    ></vm-action-button>
-                </div>
+            <vm-card
+                class="modal-pane"
+                :class="{ 'modal-visible': isVisible }"
+                :elevation="8"
+            >
                 <div class="modal-content">
                     <slot></slot>
                 </div>
-            </div>
+            </vm-card>
             <div
                 class="modal-background"
                 :class="{ 'modal-background-visible': isVisible }"
@@ -34,10 +25,12 @@ import { defineComponent, ref } from 'vue';
 
 // components
 import VmActionButton from './action-button.vue';
+import VmCard from './card.vue';
 
 export default defineComponent({
     components: {
         VmActionButton,
+        VmCard,
     },
     props: {
         title: {
@@ -88,27 +81,7 @@ export default defineComponent({
     pointer-events: none;
 }
 
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.08);
-    font-size: 1.1rem;
-    color: #fff;
-}
-
-.modal-header .modal-title {
-    margin-left: 15px;
-}
-
-.modal-header .exit {
-    margin-right: 5px;
-}
-
 .modal-content {
-    padding: 15px 20px;
     height: 100%;
     overflow-y: auto;
 }
@@ -118,20 +91,17 @@ export default defineComponent({
     z-index: 1000;
     overflow: hidden;
     border-radius: 3px;
-    min-width: 400px;
     width: 600px;
     max-width: 600px;
     margin: 30px;
     display: flex;
     flex-direction: column;
     max-height: 90%;
-    background: #333;
     opacity: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     pointer-events: none;
     z-index: 2;
     transform: scale(0.8);
-    transition-duration: 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .modal-background {
@@ -144,7 +114,7 @@ export default defineComponent({
     left: 0;
     right: 0;
     z-index: 1;
-    transition-duration: 0.2s;
+    transition: opacity 0.2s;
 }
 
 .modal-visible {
@@ -155,6 +125,6 @@ export default defineComponent({
 .modal-visible {
     opacity: 1;
     pointer-events: all;
-    transition-duration: 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
 }
 </style>

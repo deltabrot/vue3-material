@@ -22,7 +22,7 @@ export default defineComponent({
 
 <style scoped>
 .card-header {
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 1.2rem;
     font-weight: 500;
 }
