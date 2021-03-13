@@ -37,7 +37,7 @@ html {
 body {
     display: flex;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     flex: 1;
     margin: 0;
 }
@@ -268,7 +268,7 @@ body {
 .light-theme {
     --default-surface: 255, 255, 255;
     --default-background: 250, 250, 250;
-    --default-color: 0, 0, 0;
+    --default-color: 50, 50, 50;
 }
 
 .dark-theme {

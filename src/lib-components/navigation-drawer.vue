@@ -31,9 +31,6 @@ export default defineComponent({
 
 <style scoped>
 .navigation-drawer {
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
     padding: 20px 32px;
     overflow-y: auto;
 }

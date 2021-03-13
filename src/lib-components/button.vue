@@ -1,27 +1,41 @@
 <template>
     <component
-        class="btn-ripple"
-        :class="[`btn-${props.variant}`, {'disabled': isDisabled}]"
+        class="vm-btn"
+        :class="[`btn-${props.variant}`, { disabled: isDisabled }]"
         :style="cssProperties"
-        @mousedown="createRipple"
-        :type="isSubmit ? 'submit' : 'button'"
-        ref="btnRipple"
+        :type="props.type"
         :to="routerPath"
         :is="routerPath ? 'router-link' : 'button'"
     >
         <div class="btn-overlay"></div>
-        <div class="content">
+        <vm-ripple
+            :rippleColor="
+                props.variant !== 'contained'
+                    ? props.primaryColor
+                    : props.accentColor
+            "
+        >
             <slot></slot>
-        </div>
+        </vm-ripple>
     </component>
 </template>
 
 <script lang="ts">
 // vue
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, computed } from 'vue';
+
+// components
+import VmRipple from './ripple.vue';
 
 export default defineComponent({
+    components: {
+        VmRipple,
+    },
     props: {
+        type: {
+            type: String,
+            default: 'button',
+        },
         variant: {
             type: String,
             validator: (prop: string) =>
@@ -36,115 +50,34 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
-        isSubmit: {
-            type: Boolean,
-            default: false,
-        },
         primaryColor: {
             type: String,
-            default: '98, 0, 238',
+            default: 'rgb(98, 0, 238)',
+        },
+        accentColor: {
+            type: String,
+            default: 'rgb(255, 255, 255)',
         },
         elevation: {
             type: Number,
             default: 2,
         },
-        isAutoTextColor: {
-            type: Boolean,
-            default: false,
-        },
     },
     // eslint-disable-next-line
     setup(props: any) {
-        // refs
-        const btnRipple = ref<null | HTMLElement>(null);
-
-        // methods
-        const lightOrDark = (color: string) => {
-            let rgbArray = color.split(',');
-            if (rgbArray.length !== 3) {
-                return 'light';
-            }
-
-            let r = parseInt(rgbArray[0]);
-            let g = parseInt(rgbArray[1]);
-            let b = parseInt(rgbArray[2]);
-
-            // HSP equation from http://alienryderflex.com/hsp.html
-            let hsp = Math.sqrt(
-                0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b),
-            );
-
-            if (hsp > 127.5) {
-                return 'light';
-            } else {
-                return 'dark';
-            }
-        };
-
         // computed
         const cssProperties = computed(() => {
             return (
                 `--primary-color: ${props.primaryColor};` +
-                `--text-color: ${
-                    props.isAutoTextColor
-                        ? lightOrDark(props.primaryColor) === 'light'
-                            ? '0, 0, 0'
-                            : '255, 255, 255'
-                        : '255, 255, 255'
-                };` +
-                `--ripple-color: ${
-                    props.variant !== 'contained'
-                        ? props.primaryColor
-                        : props.isAutoTextColor
-                        ? lightOrDark(props.primaryColor) === 'light'
-                            ? '0, 0, 0'
-                            : '255, 255, 255'
-                        : '255, 255, 255'
-                };` +
+                `--text-color: ${props.accentColor};` +
                 `--default-elevation: var(--elevation-${props.elevation});` +
                 `--focus-elevation: var(--elevation-${props.elevation + 2});` +
                 `--active-elevation: var(--elevation-${props.elevation + 6});`
             );
         });
 
-        // methods
-        const createRipple = (event: PointerEvent) => {
-            const button = event.currentTarget as HTMLElement;
-
-            if (button) {
-                const circle = document.createElement('span');
-                const diameter = Math.max(
-                    button.clientWidth,
-                    button.clientHeight,
-                );
-                const radius = diameter / 2;
-
-                circle.style.width = circle.style.height = `${diameter}px`;
-
-                const buttonElement = button.getBoundingClientRect();
-                circle.style.left = `
-                    ${event.clientX - buttonElement.left - radius}px
-                `;
-                circle.style.top = `
-                    ${event.clientY - buttonElement.top - radius}px
-                `;
-                circle.classList.add('ripple');
-
-                if (btnRipple.value) {
-                    const ripple = button.getElementsByClassName('ripple')[0];
-                    if (ripple) {
-                        ripple.remove();
-                    }
-                }
-
-                button.appendChild(circle);
-            }
-        };
-
         return {
             props,
-            createRipple,
-            btnRipple,
             cssProperties,
         };
     },
@@ -154,8 +87,8 @@ export default defineComponent({
 <style scoped>
 /* contained */
 .btn-contained {
-    color: rgb(var(--text-color));
-    background: rgb(var(--primary-color));
+    color: var(--text-color);
+    background: var(--primary-color);
     box-shadow: var(--default-elevation);
     border: 0;
     padding: 10px 16px;
@@ -182,35 +115,35 @@ export default defineComponent({
 /* outlined and text */
 .btn-outlined {
     background: none;
-    color: rgb(var(--primary-color));
-    border: 1px solid rgb(var(--primary-color));
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     padding: 10px 15px;
 }
 
 .btn-text {
     background: none;
-    color: rgb(var(--primary-color));
+    color: var(--primary-color);
     border: 0;
     padding: 10px 16px;
 }
 
-.btn-text:hover,
-.btn-outlined:hover {
-    background: rgba(var(--primary-color), 0.1);
+.btn-text .btn-overlay,
+.btn-outlined .btn-overlay {
+    opacity: 0.1;
 }
 
-.btn-text:focus,
-.btn-outlined:focus {
-    background: rgba(var(--primary-color), 0.2);
+.btn-text:hover .btn-overlay,
+.btn-outlined:hover .btn-overlay {
+    background: var(--primary-color);
 }
 
-/* content */
-.content {
-    z-index: 10;
+.btn-text:focus .btn-overlay,
+.btn-outlined:focus .btn-overlay {
+    background: var(--primary-color);
+    opacity: 0.2;
 }
 
-/* ripple */
-.btn-ripple {
+.vm-btn {
     font-family: 'Roboto', sans-serif;
     user-select: none;
     display: inline-flex;
@@ -241,42 +174,5 @@ export default defineComponent({
 .disabled {
     opacity: 0.5;
     pointer-events: none;
-}
-</style>
-
-<style>
-span.ripple {
-    --visible-opacity: 0.2;
-    pointer-events: none;
-    display: flex;
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    background-color: rgba(var(--ripple-color), 0);
-    box-shadow: 0 0 5px 5px rgba(var(--ripple-color), var(--visible-opacity));
-    animation: ripple 450ms ease-in;
-    transform: scale(4);
-    transition: background-color 0.2s;
-}
-
-.btn-ripple:active:hover span.ripple {
-    background-color: rgba(
-        var(--ripple-color),
-        var(--visible-opacity)
-    ) !important;
-}
-
-@keyframes ripple {
-    0% {
-        background-color: rgba(var(--ripple-color), var(--visible-opacity));
-        transform: scale(0);
-    }
-    66% {
-        background-color: rgba(var(--ripple-color), var(--visible-opacity));
-        transform: scale(4);
-    }
-    100% {
-        background-color: rgba(var(--ripple-color), 0);
-    }
 }
 </style>

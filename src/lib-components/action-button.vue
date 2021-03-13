@@ -1,139 +1,140 @@
 <template>
     <button
-        class="btn-ripple"
+        class="vm-action-btn"
         :class="{ small: isSmall }"
-        @mousedown="createRipple"
+        :style="cssProperties"
         :type="type"
-        ref="btnRipple"
     >
-        <div class="btn-overlay"></div>
-        <i :class="props.icon"></i>
+        <vm-ripple :rippleColor="props.accentColor">
+            <div class="btn-overlay"></div>
+            <div class="content">
+                <i :class="props.icon"></i>
+                <div v-if="props.label">{{ props.label }}</div>
+            </div>
+        </vm-ripple>
     </button>
 </template>
 
 <script lang="ts">
 // vue
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, computed } from 'vue';
+
+// components
+import VmRipple from './ripple.vue';
 
 export default defineComponent({
+    components: {
+        VmRipple,
+    },
     props: {
         type: {
             type: String,
             default: 'button',
         },
-        background: {
-            type: String,
-            default: '#3ca354',
-        },
-        color: {
-            type: String,
-            default: '#ffffff',
-        },
-        elevation: {
-            type: Number,
-            default: 1,
-        },
         icon: {
             type: String,
             default: 'fal fa-coffee',
+        },
+        label: {
+            type: String,
+            default: '',
         },
         isSmall: {
             type: Boolean,
             default: false,
         },
+        primaryColor: {
+            type: String,
+            default: 'rgb(98, 0, 238)',
+        },
+        accentColor: {
+            type: String,
+            default: 'rgb(255, 255, 255)',
+        },
+        elevation: {
+            type: Number,
+            default: 1,
+        },
     },
     // eslint-disable-next-line
     setup(props: any) {
-        // refs
-        const btnRipple = ref<null | HTMLElement>(null);
+        // computed
+        const cssProperties = computed(() => {
+            let css =
+                `--primary-color: ${props.primaryColor};` +
+                `--text-color: ${props.accentColor};`;
 
-        // methods
-        const createRipple = (event: PointerEvent) => {
-            const button = event.currentTarget as HTMLElement;
-
-            if (button) {
-                const circle = document.createElement('span');
-                const diameter = Math.max(
-                    button.clientWidth,
-                    button.clientHeight,
-                );
-                const radius = diameter / 2;
-
-                circle.style.width = circle.style.height = `${diameter}px`;
-
-                const buttonElement = button.getBoundingClientRect();
-                circle.style.left = `
-                    ${event.clientX - buttonElement.left - radius}px
-                `;
-                circle.style.top = `
-                    ${event.clientY - buttonElement.top - radius}px
-                `;
-                circle.classList.add('ripple');
-
-                const ripple = button.getElementsByClassName('ripple')[0];
-                if (ripple) {
-                    ripple.remove();
-                }
-
-                button.appendChild(circle);
+            if (!props.label) {
+                css += `--ab-width: var(--size);` + `--ab-padding: 0;`;
             }
-        };
 
-        // lifecycle hooks
-        onMounted(() => {
-            if (btnRipple.value) {
-                btnRipple.value.style.setProperty(
-                    '--background',
-                    props.background,
-                );
-
-                const elevationShadowColor = props.elevation * 0.5;
-                btnRipple.value.style.setProperty(
-                    '--elevation-shadow',
-                    `0 2px 4px rgba(0, 0, 0, ${elevationShadowColor})`,
-                );
-                btnRipple.value.style.setProperty('--color', props.color);
+            if (props.elevation !== null) {
+                css +=
+                    `--default-elevation: var(--elevation-${props.elevation});` +
+                    `--focus-elevation: var(--elevation-${props.elevation +
+                        2});` +
+                    `--active-elevation: var(--elevation-${props.elevation +
+                        6});`;
             }
+            return css;
         });
 
         return {
             props,
-            createRipple,
-            btnRipple,
+            cssProperties,
         };
     },
 });
 </script>
 
 <style scoped>
-.btn-ripple {
+.vm-action-btn {
     --size: 45px;
-    width: var(--size);
+    --ab-padding: 16px;
+    width: var(--ab-width);
     height: var(--size);
-    min-width: var(--size);
+    min-width: var(--ab-width);
     min-height: var(--size);
-    max-width: var(--size);
+    max-width: var(--ab-width);
     max-height: var(--size);
     user-select: none;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     overflow: hidden;
     transition: background 400ms;
-    color: var(--color);
-    background: var(--background);
+    color: var(--text-color);
+    background: var(--primary-color);
     font-size: 1.6rem;
     outline: 0;
     border: 0;
     border-radius: calc(var(--size) / 2);
     box-shadow: var(--elevation-shadow);
+    padding: 0 var(--ab-padding);
     cursor: pointer;
+    box-shadow: var(--default-elevation);
+    transition: background 100ms, box-shadow 300ms;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 1.25px;
 }
 
-.btn-ripple:hover .btn-overlay {
+.vm-action-btn:hover,
+.vm-action-btn:focus {
+    box-shadow: var(--focus-elevation);
+}
+
+.vm-action-btn:active:focus {
+    box-shadow: var(--active-elevation);
+}
+
+.vm-action-btn:hover .btn-overlay {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.btn-ripple:focus .btn-overlay {
+.vm-action-btn:focus .btn-overlay {
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -151,23 +152,11 @@ export default defineComponent({
     background: rgba(255, 255, 255, 0);
     transition-duration: 0.1s;
 }
-</style>
 
-<style>
-span.ripple {
+.content {
+    z-index: 1;
     display: flex;
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple 600ms linear;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.7);
-}
-
-@keyframes ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+    justify-content: center;
+    width: 100%;
 }
 </style>

@@ -5,6 +5,12 @@ export default {
     componentUsage: '<vm-button></vm-button>',
     propInfo: [
         {
+            name: 'type',
+            type: 'string',
+            description: 'The type attribute of the button.',
+            default: 'button',
+        },
+        {
             name: 'variant',
             type: '\'contained\' | \'outlined\' | \'text\'',
             description: 'The variant of button to render.',
@@ -17,35 +23,22 @@ export default {
             default: '',
         },
         {
-            name: 'isDisabled',
-            type: 'boolean',
-            description: 'If true, the button will be disabled.',
-            default: 'false',
-        },
-        {
-            name: 'isSubmit',
-            type: 'boolean',
-            description:
-                'Whether to treat the button as a submit button for a form.',
-            default: 'false',
-        },
-        {
             name: 'primaryColor',
             type: 'string',
-            description: 'The primary color of the button, must in the form "r, g, b".',
-            default: '98, 0, 238',
+            description: 'The primary color of the button.',
+            default: 'rgb(98, 0, 238)',
+        },
+        {
+            name: 'accentColor',
+            type: 'string',
+            description: 'The accent color of the button.',
+            default: 'rgb(255, 255, 255)',
         },
         {
             name: 'elevation',
             type: 'number',
             description: 'Set the elevation level of the button.',
             default: '2',
-        },
-        {
-            name: 'isAutoTextColor',
-            type: 'boolean',
-            description: 'Automatically determine text color based on primary color.',
-            default: 'false',
         },
     ],
     examples: [
@@ -62,7 +55,7 @@ export default {
                 'A simple button with modified solid background color.',
             innerHtml: `    BUTTON`,
             component: 'vm-button',
-            props: { primaryColor: '170, 0, 0' },
+            props: { primaryColor: 'rgb(170, 0, 0)' },
         },
         {
             title: 'Outlined button',
@@ -84,7 +77,15 @@ export default {
                 'A simple button with modified solid background color, illustrates the text color changing automatically based on the primary color.',
             innerHtml: `    BUTTON`,
             component: 'vm-button',
-            props: { primaryColor: '86, 232, 220', isAutoTextColor: true },
+            props: { primaryColor: 'rgb(86, 232, 220)', accentColor: 'rgb(0, 0, 0)' },
+        },
+        {
+            title: 'Floating action button',
+            description:
+                'A simple floating action button.',
+            innerHtml: ``,
+            component: 'vm-action-button',
+            props: { label: 'TEST'},
         },
     ],
 };
