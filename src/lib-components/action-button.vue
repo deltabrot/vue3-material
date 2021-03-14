@@ -9,7 +9,7 @@
             <div class="btn-overlay"></div>
             <div class="content">
                 <i :class="props.icon"></i>
-                <div v-if="props.label">{{ props.label }}</div>
+                <div class="label-text" v-if="props.label">{{ props.label }}</div>
             </div>
         </vm-ripple>
     </button>
@@ -116,9 +116,12 @@ export default defineComponent({
     box-shadow: var(--default-elevation);
     transition: background 100ms, box-shadow 300ms;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 1.25px;
+}
+
+.label-text {
+    font-size: 0.88rem;
 }
 
 .vm-action-btn:hover,

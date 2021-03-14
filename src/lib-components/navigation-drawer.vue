@@ -33,5 +33,10 @@ export default defineComponent({
 .navigation-drawer {
     padding: 20px 32px;
     overflow-y: auto;
+    transition: box-shadow 0.2s;
+}
+
+.navigation-drawer:before {
+    transition: background 0.2s;
 }
 </style>
