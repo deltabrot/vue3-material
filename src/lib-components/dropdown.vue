@@ -105,7 +105,7 @@ export default defineComponent({
     --label-padding: 6px;
     --horizontal-padding: 16px;
     --vertical-padding: 16px;
-    --border: 1px solid rgba(255, 255, 255, 0.3);
+    --border: 1px solid rgba(var(--default-color), 0.42);
     --height: calc(var(--font-size) + (var(--vertical-padding) * 2) + 2px);
     display: flex;
     width: 100%;
@@ -113,7 +113,10 @@ export default defineComponent({
     border-radius: 4px;
     background: rgba(255, 255, 255, 0);
     position: relative;
-    color: #fff;
+}
+
+.dropdown:hover {
+    --border: 1px solid rgba(var(--default-color), 0.87);
 }
 
 .dropdown-left,
@@ -156,14 +159,15 @@ export default defineComponent({
     border: none;
     padding: 0 calc(var(--horizontal-padding) - 4px);
     background: rgba(255, 255, 255, 0);
-    color: #fff;
+    color: rgb(var(--default-color));
     margin-right: var(--horizontal-padding);
+    outline: none;
 }
 
 .dropdown-label {
     flex: 1;
     padding: 0 6px;
-    color: #aaa;
+    color: rgba(var(--default-color), 0.6);
     transition-duration: 0.2s;
     transform: translateY(calc((-1 / 2) * var(--height)));
     font-size: 0.8rem;
@@ -171,24 +175,24 @@ export default defineComponent({
 }
 
 .dropdown-field option {
-    color: #000;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .default-option {
-    color: #aaa;
+    color: rgba(var(--default-color), 0.6);
 }
 
 .dropdown-field option.default-option-text {
-    color: #777;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .dropdown-field:focus ~ .dropdown-left,
 .dropdown-field:focus ~ .dropdown-notch,
 .dropdown-field:focus ~ .dropdown-right {
-    border-color: #2c60d1;
+    border-color: #4c77d6;
 }
 
 .dropdown-field:focus ~ .dropdown-notch .dropdown-label {
-    color: #82a4ed;
+    color: #4c77d6;
 }
 </style>

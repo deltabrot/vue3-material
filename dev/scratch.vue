@@ -1,6 +1,22 @@
 <template>
     <vm-container style="flex: 1; margin: 30px 0; min-width: 1px;">
-        <vm-card style="padding: 50px; margin-bottom: 20px">
+        <vm-card>
+            <vm-card-content>
+                <vm-dropdown
+                    v-model="currentId"
+                    :options="[
+                        { id: 1, title: 'test' },
+                        { id: 2, title: 'test2' },
+                    ]"
+                ></vm-dropdown>
+            </vm-card-content>
+        </vm-card>
+        <vm-card style="margin-bottom: 20px; margin-top: 20px">
+            <vm-card-content>
+                <vm-text-field variant="outlined"></vm-text-field>
+            </vm-card-content>
+        </vm-card>
+        <vm-card style="padding: 50px; margin-bottom: 20px; margin-top: 20px">
             <div>Value: {{ x }}</div>
             <div>Number value: {{ y }}</div>
         </vm-card>
@@ -87,6 +103,8 @@ export default defineComponent({
             testModal.value?.show();
         };
 
+        const currentId = ref(0);
+
         return {
             x,
             y,
@@ -94,6 +112,7 @@ export default defineComponent({
             gridConfig,
             testModal,
             showModal,
+            currentId,
         };
     },
 });
