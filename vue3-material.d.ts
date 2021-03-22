@@ -10,6 +10,7 @@ export const VmCard: DefineComponent<{}, {}, any>;
 export const VmCardContent: DefineComponent<{}, {}, any>;
 export const VmCardHeader: DefineComponent<{}, {}, any>;
 export const VmContainer: DefineComponent<{}, {}, any>;
+export const VmDatePicker: DefineComponent<{}, {}, any>;
 export const VmDivider: DefineComponent<{}, {}, any>;
 export const VmDropdown: DefineComponent<{}, {}, any>;
 export const VmGrid: DefineComponent<{}, {}, any>;

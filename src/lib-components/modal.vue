@@ -108,7 +108,7 @@ export default defineComponent({
     opacity: 0;
     pointer-events: none;
     position: fixed;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     top: 0;
     bottom: 0;
     left: 0;

@@ -13,6 +13,13 @@
         </vm-card>
         <vm-card style="margin-bottom: 20px; margin-top: 20px">
             <vm-card-content>
+                {{ currentDate }}
+                <vm-date-picker label="Test date" variant="outlined" v-model="currentDate">
+                </vm-date-picker>
+            </vm-card-content>
+        </vm-card>
+        <vm-card style="margin-bottom: 20px; margin-top: 20px">
+            <vm-card-content>
                 <vm-text-field variant="outlined"></vm-text-field>
             </vm-card-content>
         </vm-card>
@@ -105,6 +112,8 @@ export default defineComponent({
 
         const currentId = ref(0);
 
+        const currentDate = ref(null);
+
         return {
             x,
             y,
@@ -113,6 +122,7 @@ export default defineComponent({
             testModal,
             showModal,
             currentId,
+            currentDate,
         };
     },
 });

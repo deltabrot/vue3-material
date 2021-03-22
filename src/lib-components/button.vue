@@ -67,13 +67,19 @@ export default defineComponent({
     setup(props: any) {
         // computed
         const cssProperties = computed(() => {
-            return (
+            let css =
                 `--primary-color: ${props.primaryColor};` +
-                `--text-color: ${props.accentColor};` +
-                `--default-elevation: var(--elevation-${props.elevation});` +
-                `--focus-elevation: var(--elevation-${props.elevation + 2});` +
-                `--active-elevation: var(--elevation-${props.elevation + 6});`
-            );
+                `--text-color: ${props.accentColor};`;
+
+            if (props.elevation !== null) {
+                css +=
+                    `--default-elevation: var(--elevation-${props.elevation});` +
+                    `--focus-elevation: var(--elevation-${props.elevation +
+                        2});` +
+                    `--active-elevation: var(--elevation-${props.elevation +
+                        6});`;
+            }
+            return css;
         });
 
         return {
