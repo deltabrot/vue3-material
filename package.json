@@ -1,6 +1,6 @@
 {
     "name": "vue3-material",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Vue 3 components which adhere to the material design spec",
     "license": "MIT",
     "repository": "deltabrot/vue3-material",
